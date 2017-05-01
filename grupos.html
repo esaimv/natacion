@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Natación ITH</title>
+  <meta charset="utf-8">
+  <meta name="viewports" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Icons -->
+  <link rel="stylesheet" href="bootstrap/css/font-awesome.min.css">
+  <!-- styles -->
+  <link href="css/styles.css" rel="stylesheet">
+  <!-- Tittle Icon -->
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <!-- Logo -->
+          <div class="logo">
+            <h1>
+              <a href="principal.html">
+                <img src="images/SIA.png" width="35%"/>
+                Natación ITH
+              </a>
+            </h1>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-lg-12">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="navbar navbar-inverse" role="banner">
+            <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                      <b id="usuario"></b>
+                      <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu animated fadeInUp">
+                    <li><a href="profile.html">Perfil</a></li>
+                    <li><a href="destroy.php">Cerrar sesion</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="page-content">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="sidebar content-box" style="display: block;">
+          <ul class="nav">
+            <!-- Main menu -->
+            <li class="submenu">
+              <a href="#">
+                <i class="fa fa-bars" aria-hidden="true"></i> Menú
+                <span class="caret pull-right"></span>
+              </a>
+              <ul class="nav">
+                <li><a href="principal.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+                <li class="current"><a href="grupos.html"><i class="fa fa-users" aria-hidden="true"></i> Grupos</a></li>
+                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> Sesiones</a></li>
+                <li><a href="#"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
+                <li><a href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> Chequeo</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="content-box-large">
+              <div class="panel-heading">
+                <div class="panel-title">Grupos</div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover" id="tabla">
+                  <thead>
+                    <tr>
+                      <th jd="tid">ID</th>
+                      <th id="tnombre">Nombre</th>
+                      <th id="thora_entrada">Hora de entrada</th>
+                      <th id="thora_salida">Hora de salida</th>
+                      <th id="tdias" >Dias</th>
+                      <th id="teditar">Administrar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="content-box-large">
+                  <div class="panel-heading">
+                    <div class="panel-title">Agregar</div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="col-md-6">
+                          <label for="nombre">Grupo:</label>
+                          <input id="nombre" class="form-control" type="text" name="nombre" value="" placeholder="Nombre" method="post">
+                        </div>
+                        <div class="col-md-3">
+                          <label for="hora_entrada">Hora de entrada:</label>
+                          <select id="hora_entrada" class="form-control" method="get">
+                            <option>7:00 am</option>
+                            <option>8:00 am</option>
+                            <option>9:00 am</option>
+                            <option>10:00 am</option>
+                            <option>11:00 am</option>
+                            <option>12:00 pm</option>
+                            <option>1:00 pm</option>
+                            <option>2:00 pm</option>
+                            <option>3:00 pm</option>
+                            <option>4:00 pm</option>
+                            <option>5:00 pm</option>
+                            <option>6:00 pm</option>
+                            <option>7:00 pm</option>
+                            <option>8:00 pm</option>
+                            <option>9:00 pm</option>
+                          </select>
+                        </div>
+                        <div class="col-md-3">
+                          <label for="hora_salida">Hora de salida:</label>
+                          <select id="hora_salida" class="form-control" method="get">
+                            <option>7:00 am</option>
+                            <option>8:00 am</option>
+                            <option>9:00 am</option>
+                            <option>10:00 am</option>
+                            <option>11:00 am</option>
+                            <option>12:00 pm</option>
+                            <option>1:00 pm</option>
+                            <option>2:00 pm</option>
+                            <option>3:00 pm</option>
+                            <option>4:00 pm</option>
+                            <option>5:00 pm</option>
+                            <option>6:00 pm</option>
+                            <option>7:00 pm</option>
+                            <option>8:00 pm</option>
+                            <option>9:00 pm</option>
+                          </select><br/>
+                        </div>
+                        <div class="col-md-10 col-md-offset-2">
+                          <div class="row">
+                            <div class="col-md-4">
+                                <input type="button" class="btn btn-primary btn-block" id="guardar" value="Guardar">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="button" class="btn btn-primary btn-block" id="actualizar" value="Actualizar" disabled="true">
+                            </div>
+                            <div class="col-md-4">
+                              <input type="button" class="btn btn-primary btn-block" id="eliminar" value="Eliminar" disabled="true">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="row"> -->
+                    <!-- </div> -->
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="content-box-large">
+                  <div class="panel-body">
+                    <div class="col-md-12">
+                      <label>Días:</label>
+                      <div class="checkbox">
+                        <label>
+                          <input id="lunes" type="checkbox" value="Lunes">Lunes
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input id="martes" type="checkbox" value="Martes">Martes
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input id="miercoles" type="checkbox" value="Miercoles">Miercoles
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input id="jueves" type="checkbox" value="Jueves">Jueves
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input id="viernes" type="checkbox" value="Viernes">Viernes
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input id="sabado" type="checkbox" value="Sabado">Sabado
+                        </label>
+                      </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="copy text-center">
+        Copyright 2017 <a href='#'>Sitio web</a>
+      </div>
+    </div>
+  </footer>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/grupos.js"></script>
+  <script src="js/Tabullet.js"></script>
+
+</body>
+</html>
