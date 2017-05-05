@@ -389,7 +389,7 @@ footer .copy{
 	border-left: 4px solid transparent;
 }
 
-.sidebar .nav li.open > a:hover > .caret {
+.sidebar .nav .li.open > a:hover > .caret {
 	border-bottom-color: #aaa;
 }
 

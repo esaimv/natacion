@@ -96,83 +96,24 @@
           </ul>
         </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-10">
         <div class="row">
           <div class="col-md-12">
             <div class="content-box-large">
               <div class="panel-heading">
-                <div class="panel-title">Grupos: </div>
+                <div class="panel-title">Sesiones</div>
               </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-5">
-                    <div class="col-md-10">
-                      <label for="grupo">Grupo: </label>
-                      <select id="grupo" class="form-control" method="get">
-                        <option>GRUPO1</option>
-                        <option>GRUPO2</option>
-                        <option>GRUPO3</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="col-md-12">
-                      <label for="descripcion">Descripcion: </label>
-                      <textarea name="descripcion" rows="8" cols="80" class="form-control"></textarea>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="col-md-3">
-                      <label for="grupo">Ejercicios: </label>
-                      <div class="checkbox">
-                        <label>
-                          <input id="50L" type="checkbox" value="50L">50 Libres
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input id="100L" type="checkbox" value="100L">100 Libres
-                        </label>
-                      </div>
-
-                      <div class="checkbox">
-                        <label>
-                          <input id="200L" type="checkbox" value="200L">200 Libres
-                        </label>
-                      </div>
-
-                    <div class="checkbox">
-                      <label>
-                        <input id="50P" type="checkbox" value="50P">50 Pecho
-                      </label>
-                    </div>
-
-                    <div class="checkbox">
-                      <label>
-                        <input id="100P" type="checkbox" value="100P">100 Pecho
-                      </label>
-                    </div>
-
-                    <div class="checkbox">
-                      <label>
-                        <input id="50M" type="checkbox" value="50M">50 Mariposa
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="col-md-3">
-                      <label for="grupo">Tiempos: </label>
-                      <input class="form-control" type="text" id="tiempos" placeholder="x00:00">
-                    </div>
-                  </div>
-                </div>
+              <div class="table-responsive">
+                <table class="table table-hover" id="tabla">
+                  <thead>
+                    <tr>
+                      <th id="tid">ID</th>
+                      <th id="tgrupo">Grupo</th>
+                      <th id="tfecha">Fecha</th>
+                      <th id="tver">Descripcion</th>
+                    </tr>
+                  </thead>
+                </table>
               </div>
             </div>
           </div>
@@ -180,7 +121,6 @@
       </div>
     </div>
   </div>
-
   <footer>
     <div class="container">
       <div class="copy text-center">
@@ -194,7 +134,7 @@
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="js/login.js"></script>
-  <script src="js/grupos.js"></script>
+  <script src="js/sesiones.js"></script>
   <script src="js/Tabullet.js"></script>
 
 </body>
