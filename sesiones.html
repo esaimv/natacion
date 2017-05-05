@@ -52,7 +52,7 @@
                   </a>
                   <ul class="dropdown-menu animated fadeInUp">
                     <li><a href="profile.html">Perfil</a></li>
-                    <li><a href="destroy.php">Cerrar sesión</a></li>
+                    <li><a href="destroy.php">Cerrar sesion</a></li>
                   </ul>
                 </li>
               </ul>
@@ -62,6 +62,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="page-content">
     <div class="row">
@@ -75,9 +76,9 @@
                 <span class="caret pull-right"></span>
               </a>
               <ul class="nav">
-                <li class="current"><a href="principal.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+                <li><a href="principal.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
                 <li><a href="grupos.html"><i class="fa fa-users" aria-hidden="true"></i> Grupos</a></li>
-                <li><a href="sesiones.html"><i class="fa fa-star" aria-hidden="true"></i> Sesiones</a></li>
+                <li class="current"><a href="sesiones.html"><i class="fa fa-star" aria-hidden="true"></i> Sesiones</a></li>
                 <li><a href="#"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
                 <li><a href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> Chequeo</a></li>
               </ul>
@@ -85,45 +86,106 @@
           </ul>
         </div>
       </div>
-
-      <div class="col-md-10">
+      <div class="col-md-9">
         <div class="row">
           <div class="col-md-12">
-            <div class="col-md-12">
-              <div class="content-box-large">
-                <img src="images/michaelphelps.jpg" width="100% 10%">
+            <div class="content-box-large">
+              <div class="panel-heading">
+                <div class="panel-title">Grupos: </div>
               </div>
-            </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="col-md-10">
+                      <label for="grupo">Grupo: </label>
+                      <select id="grupo" class="form-control" method="get">
+                        <option>GRUPO1</option>
+                        <option>GRUPO2</option>
+                        <option>GRUPO3</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="col-md-12">
+                      <label for="descripcion">Descripcion: </label>
+                      <textarea name="descripcion" rows="8" cols="80" class="form-control"></textarea>
+                    </div>
+                  </div>
+                </div>
 
-            <div class="col-md-12">
-              <div class="content-box-large">
-                <p class="cursiva">"No puedes poner un límite a nada. Cuanto más sueñas, más lejos llegas."
-                  <br>Michael Phelps
-                </p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-3">
+                      <label for="grupo">Ejercicios: </label>
+                      <div class="checkbox">
+                        <label>
+                          <input id="50L" type="checkbox" value="50L">50 Libres
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input id="100L" type="checkbox" value="100L">100 Libres
+                        </label>
+                      </div>
+
+                      <div class="checkbox">
+                        <label>
+                          <input id="200L" type="checkbox" value="200L">200 Libres
+                        </label>
+                      </div>
+
+                    <div class="checkbox">
+                      <label>
+                        <input id="50P" type="checkbox" value="50P">50 Pecho
+                      </label>
+                    </div>
+
+                    <div class="checkbox">
+                      <label>
+                        <input id="100P" type="checkbox" value="100P">100 Pecho
+                      </label>
+                    </div>
+
+                    <div class="checkbox">
+                      <label>
+                        <input id="50M" type="checkbox" value="50M">50 Mariposa
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-3">
+                      <label for="grupo">Tiempos: </label>
+                      <input class="form-control" type="text" id="tiempos" placeholder="x00:00">
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <footer>
     <div class="container">
-
       <div class="copy text-center">
         Copyright 2017 <a href='#'>DesignMates</a>
       </div>
-
     </div>
   </footer>
-
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/jquery.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="js/login.js"></script>
+  <script src="js/grupos.js"></script>
+  <script src="js/Tabullet.js"></script>
+
 </body>
 </html>
