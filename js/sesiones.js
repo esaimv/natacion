@@ -3,6 +3,25 @@ function ejercicios(desc){
 }
 
 $(document).ready(function(){
+
+    $('.form_date').datetimepicker({
+      language:  'es',
+      weekStart: 1,
+      todayBtn:  1,
+      autoclose: 1,
+      todayHighlight: 1,
+      startView: 2,
+      minView: 2,
+      forceParse: 0
+    });
+
+    $('#filtrar').change(function () {
+        var rex = new RegExp($(this).val(), 'i');
+        $('.buscar tr').hide();
+        $('.buscar tr').filter(function () {
+            return rex.test($(this).text());
+        }).show();
+    })
     $('#filtrar').keyup(function () {
         var rex = new RegExp($(this).val(), 'i');
         $('.buscar tr').hide();
