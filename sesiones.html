@@ -102,7 +102,7 @@
       <div class="col-md-10">
         <div class="row">
 
-          <div class="col-md-5">
+          <div class="col-md-12">
             <div class="row">
               <div class="col-md-12">
                 <div class="content-box-large">
@@ -112,7 +112,7 @@
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="col-md-9">
+                        <div class="col-md-7">
                           <label for="grupo">Grupo:</label>
                           <select id="grupo" class="form-control" method="get">
                             <option value="" selected disabled>Seleccione</option>
@@ -120,120 +120,53 @@
                             <option>Grupo 2</option>
                             <option>Grupo 3</option>
                           </select>
+                        </div>
 
-                          <label>Ejercicios:</label>
-                          <div class="col-md-10 col-md-offset-1">
-                            <div class="checkbox">
-                              <label>
-                                <input id="1500L" type="checkbox" value="1500L">1500L
-                              </label>
+                        <div class="col-md-5">
+                          <label>Calendario:</label>
+                          <div class="form-group">
+                            <div class="input-group date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                              <input class="form-control" size="16" type="text" value="" readonly>
+                    					<span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
                             </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="400L" type="checkbox" value="400L">400L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="200L" type="checkbox" value="200L">200L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="100L" type="checkbox" value="100L">100L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="50L" type="checkbox" value="50L">50L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="100M" type="checkbox" value="100M">100M
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="100D" type="checkbox" value="100D">100D
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="200D" type="checkbox" value="200D">200D
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="100P" type="checkbox" value="100P">100P
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="200P" type="checkbox" value="200P">200P
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="200CI" type="checkbox" value="200CI">200C.I.
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="4X100L" type="checkbox" value="4X100L">4X100L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="4X100CI" type="checkbox" value="4X100CI">4X100C.I.
-                              </label>
-                            </div>
+                    				<input type="hidden" id="dtp_input2" value="" />
                           </div>
                         </div>
 
+                        <div class="col-md-7">
+                          <label for="ejercicio">Ejercicio:</label>
+                          <input class="form-control" type="text" name="ejercicio" value="">
+                        </div>
+
+                        <div class="col-md-2" style="padding-top:38px;">
+                          <input type="button" class="btn btn-primary btn-block" id="guardar" value="Guardar">
+                        </div>
+
+                        <div class="col-md-12">
+                          <label for="descripcion">Descripción:</label>
+                          <textarea class="form-control" rows="5"></textarea><br/>
+                        </div>
+                      </div>
+
+                      <div class="col-md-10 col-md-offset-2">
+                        <div class="row">
+                          <div class="col-md-3">
+                              <input type="button" class="btn btn-primary btn-block" id="guardar" value="Guardar">
+                          </div>
+                          <div class="col-md-3">
+                              <input type="button" class="btn btn-primary btn-block" id="actualizar" value="Actualizar" disabled="true">
+                          </div>
+                          <div class="col-md-3">
+                            <input type="button" class="btn btn-primary btn-block" id="eliminar" value="Eliminar" disabled="true">
+                          </div>
+                        </div>
+                      </div>
+
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-          </div>
-        </div>
-
-        <div class="col-md-7">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="content-box-large">
-                <div class="panel-body">
-                  <div class="col-md-12">
-                    <label>Calendario:</label>
-                    <div class="form-group">
-                      <div class="input-group date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                        <input class="form-control" size="16" type="text" value="" readonly>
-              					<span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
-                      </div>
-              				<input type="hidden" id="dtp_input2" value="" />
-                    </div>
-
-                    <label for="descripcion">Descripción:</label>
-                    <textarea class="form-control" rows="5"></textarea><br/>
-
-                    <div class="col-md-12">
-                      <div class="row">
-                        <div class="col-md-4">
-                            <input type="button" class="btn btn-primary btn-block" id="guardar" value="Guardar">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="button" class="btn btn-primary btn-block" id="actualizar" value="Actualizar" disabled="true">
-                        </div>
-                        <div class="col-md-4">
-                          <input type="button" class="btn btn-primary btn-block" id="eliminar" value="Eliminar" disabled="true">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
