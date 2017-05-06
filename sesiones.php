@@ -4,6 +4,7 @@
   mysqli_select_db($con, 'natacion') or die ("Error al seleccionar la Base de datos: " .mysql_error());
 
   if(!(empty($_POST['opcion']))){
+
     $opcion = $_POST['opcion'];
     //Si la opcion es agregar
     if($opcion == 'agregar'){
@@ -17,7 +18,7 @@
       mysqli_query($con, $q) or die ("Problema con query");
       $datos['mensaje'] = "Sesion agregada";
     }else{
-      $q = "SELECT * FROM grupos LEFT JOIN ...."// FALTAAA
+      $q = "SELECT * FROM grupos";// FALTAAA
       $res = mysqli_query($con, $q) or die ("Problema con query");
       $tabla = Array();
       while ($row = mysqli_fetch_array($res)){
@@ -32,17 +33,21 @@
       $datos = $tabla;
     }
   }else{
-    $q = "SELECT * FROM sesiones;"
+    $q = "SELECT * FROM sesiones;";
     $resultado = mysqli_query($con, $q) or die ("Problema con query");
-
+    $tabla = Array();
     while ($row = mysqli_fetch_array($resultado)){
-      $id = $row['id_sesion'];
-      $grupo = $row['grupo'];
+      $id = $row['id_sesiones'];
+      $id_grupo = $row['id_grupo'];
       $fecha =  $row['fecha'];
-      $descripcion = $row['descripcion'];
+      $descripcion = $row['ejercicios'];
+      $q2 = "SELECT nombre from grupos where id=".$id_grupo.";";
+      $r_grupo = mysqli_fetch_array(mysqli_query($con, $q2));
 
-      $tabla = array('id_sesion' => $id, 'grupo' => $grupo, 'fecha' => $fecha, 'descripcion' => $descripcion);
+      $tabla[] = array('id_sesion' => $id, 'grupo' => $r_grupo['nombre'], 'fecha' => $fecha, 'descripcion' => $descripcion);
     }
     $datos = $tabla;
   }
+  mysqli_close($con);
+  echo json_encode($datos);
  ?>

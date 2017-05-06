@@ -43,10 +43,8 @@
       }
     }
   }else{
-
     $q = "select * from grupos;";
     $resultado = mysqli_query($con, $q);
-
     $tabla = Array();
     while ($row = mysqli_fetch_array($resultado)){
       $id = $row['id'];
@@ -54,12 +52,10 @@
       $hora_e = $row['hora_entrada'];
       $hora_s = $row['hora_salida'];
       $dias = $row['dias'];
-
       $tabla[] = array('id' => $id, 'nombre' => $nombre, 'hora_e' => $hora_e, 'hora_s' => $hora_s, 'dias' => $dias);
     }
     $datos = $tabla;
   }
   mysqli_close($con);
   echo json_encode($datos);
-
  ?>
