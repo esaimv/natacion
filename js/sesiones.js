@@ -3,6 +3,36 @@ function ejercicios(desc){
 }
 
 $(document).ready(function(){
+    obtenergrupos();
+    function obtenergrupos(){
+      $.getJSON('grupos.php', function(grupos){
+        $.each(grupos, function(i, grupos){
+          $("#grupo").append('<option value="'+grupos.id+'">'+grupos.nombre+'</option>');
+        })
+      })
+    }
+
+    function ingresar_sesion(){
+      var datos = {
+        'id_grupo'   : $("#grupo option:selected").value(),
+        'fecha'       : $("#fecha").value(),
+        'ejercicios'  : $("#ejercicios").value(),
+        'opcion'      : 'agregar'
+      };
+      $.ajax({
+        type    : 'POST',
+        url     : 'sesiones.php',
+        data    : datos,
+        dataType: 'json',
+        encode  : true
+      })
+      .done(function(datosr){
+        alert(datosr.mensaje);
+        location.reload();
+      })
+    }
+
+
 
     $('.form_date').datetimepicker({
       language:  'es',

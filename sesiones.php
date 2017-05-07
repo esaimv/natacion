@@ -10,11 +10,11 @@
     if($opcion == 'agregar'){
       // Variables de entrada
       $fecha = $_POST['fecha'];
-      $gupo  = $_POST['grupo'];
-      $descripcion = $_POST['descripcion'];
+      $id_gupo  = $_POST['id_grupo'];
+      $ejercicios = $_POST['ejercicios'];
       //Vairbale de query
       $q = "INSERT INTO sesion (grupo, fecha, descripcion) "+
-            "VALUES (".$grupo.", '".$fecha."', '".$descripcion."');";
+            "VALUES (".$id_grupo.", '".$ejercicios."', '".$fecha."');";
       mysqli_query($con, $q) or die ("Problema con query");
       $datos['mensaje'] = "Sesion agregada";
     }else{
