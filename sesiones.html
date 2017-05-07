@@ -13,12 +13,6 @@
   <link href="css/styles.css" rel="stylesheet">
   <!-- Tittle Icon -->
   <link rel="shortcut icon" href="images/favicon.ico">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
 </head>
 <body>
   <div class="header">
@@ -53,7 +47,7 @@
                   </a>
                   <ul class="dropdown-menu animated fadeInUp">
                     <li><a href="profile.html">Perfil</a></li>
-                    <li><a href="destroy.php">Cerrar sesion</a></li>
+                    <li><a href="destroy.php">Cerrar sesión</a></li>
                   </ul>
                 </li>
               </ul>
@@ -64,10 +58,8 @@
     </div>
   </div>
 
-
   <div class="page-content">
     <div class="row">
-
       <div class="col-md-2">
         <div class="sidebar content-box" style="display: block;">
           <ul class="nav">
@@ -90,9 +82,8 @@
                     <li><a href="consultar_sesiones.html"><i class="fa fa-search" aria-hidden="true"></i>Consultar</a></li>
                   </ul>
                 </li>
-                <!-- <li><a href="sesiones.html"><i class="fa fa-star" aria-hidden="true"></i> Sesiones</a></li> -->
-                <li><a href="#"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
-                <li><a href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> Chequeo</a></li>
+                <li><a href="alumnos.html"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
+                <li><a href="chequeo.html"><i class="fa fa-check-square-o" aria-hidden="true"></i> Chequeo</a></li>
               </ul>
             </li>
           </ul>
@@ -101,129 +92,60 @@
 
       <div class="col-md-10">
         <div class="row">
-
-          <div class="col-md-5">
+          <div class="col-md-12">
             <div class="row">
               <div class="col-md-12">
                 <div class="content-box-large">
                   <div class="panel-heading">
-                    <div class="panel-title">Agregar</div>
+                    <div class="panel-title">Agregar Sesión</div>
                   </div>
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="col-md-9">
+                        <div class="col-md-7">
                           <label for="grupo">Grupo:</label>
                           <select id="grupo" class="form-control" method="get">
                             <option value="" selected disabled>Seleccione</option>
                           </select>
+                        </div>
 
-                          <label>Ejercicios:</label>
-                          <div class="col-md-10 col-md-offset-1">
-                            <div class="checkbox">
-                              <label>
-                                <input id="1500L" type="checkbox" value="1500L">1500L
-                              </label>
+                        <div class="col-md-5">
+                          <label>Calendario:</label>
+                          <div class="form-group">
+                            <div class="input-group date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                              <input class="form-control" size="16" type="text" value="" readonly>
+                    					<span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
                             </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="400L" type="checkbox" value="400L">400L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="200L" type="checkbox" value="200L">200L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="100L" type="checkbox" value="100L">100L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="50L" type="checkbox" value="50L">50L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="100M" type="checkbox" value="100M">100M
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="100D" type="checkbox" value="100D">100D
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="200D" type="checkbox" value="200D">200D
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="100P" type="checkbox" value="100P">100P
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="200P" type="checkbox" value="200P">200P
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="200CI" type="checkbox" value="200CI">200C.I.
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="4X100L" type="checkbox" value="4X100L">4X100L
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input id="4X100CI" type="checkbox" value="4X100CI">4X100C.I.
-                              </label>
-                            </div>
+                    				<input type="hidden" id="dtp_input2" value="" />
                           </div>
                         </div>
 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-
-        <div class="col-md-7">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="content-box-large">
-                <div class="panel-body">
-                  <div class="col-md-12">
-                    <label>Calendario:</label>
-                    <div class="form-group">
-                      <div class="input-group date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                        <input class="form-control" size="16" type="text" value="" readonly>
-              					<span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
-                      </div>
-              				<input type="hidden" id="dtp_input2" value="" />
-                    </div>
-
-                    <label for="descripcion">Descripción:</label>
-                    <textarea class="form-control" rows="5"></textarea><br/>
-
-                    <div class="col-md-12">
-                      <div class="row">
-                        <div class="col-md-4">
-                            <input type="button" class="btn btn-primary btn-block" id="guardar" value="Guardar">
+                        <div class="col-md-7">
+                          <label for="ejercicio">Ejercicio:</label>
+                          <input class="form-control" type="text" name="ejercicio" value="">
                         </div>
-                        <div class="col-md-4">
-                            <input type="button" class="btn btn-primary btn-block" id="actualizar" value="Actualizar" disabled="true">
+
+                        <div class="col-md-2" style="padding-top:38px;">
+                          <input type="button" class="btn btn-primary btn-block" id="guardar" value="Guardar">
                         </div>
-                        <div class="col-md-4">
-                          <input type="button" class="btn btn-primary btn-block" id="eliminar" value="Eliminar" disabled="true">
+
+                        <div class="col-md-12">
+                          <label for="descripcion">Descripción:</label>
+                          <textarea class="form-control" rows="5"></textarea><br/>
+                        </div>
+                      </div>
+
+                      <div class="col-md-10 col-md-offset-2">
+                        <div class="row">
+                          <div class="col-md-3">
+                              <input type="button" class="btn btn-primary btn-block" id="guardar" value="Guardar">
+                          </div>
+                          <div class="col-md-3">
+                              <input type="button" class="btn btn-primary btn-block" id="actualizar" value="Actualizar" disabled="true">
+                          </div>
+                          <div class="col-md-3">
+                            <input type="button" class="btn btn-primary btn-block" id="eliminar" value="Eliminar" disabled="true">
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -233,10 +155,7 @@
             </div>
           </div>
         </div>
-
-        </div>
       </div>
-
     </div>
   </div>
 

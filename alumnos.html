@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Natación ITH</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+  <!-- Font Icons -->
+  <link rel="stylesheet" href="bootstrap/css/font-awesome.min.css">
+  <!-- styles -->
+  <link href="css/styles.css" rel="stylesheet">
+  <!-- Tittle Icon -->
+  <link rel="shortcut icon" href="images/favicon.ico">
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <!-- Logo -->
+            <div class="logo">
+              <h1>
+                <a href="principal.html">
+                  <img src="images/SIA.png" width="35%"/>
+                  Natación ITH
+                </a>
+              </h1>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-lg-12">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="navbar navbar-inverse" role="banner">
+              <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                <ul class="nav navbar-nav">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <b id="usuario"></b>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInUp">
+                      <li><a href="profile.html">Perfil</a></li>
+                      <li><a href="destroy.php">Cerrar sesión</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="sidebar content-box" style="display: block;">
+            <ul class="nav">
+              <!-- Main menu -->
+              <li class="submenu">
+                <a href="#">
+                  <i class="fa fa-bars" aria-hidden="true"></i> Menú
+                  <span class="caret pull-right"></span>
+                </a>
+                <ul class="nav">
+                  <li><a href="principal.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+                  <li><a href="grupos.html"><i class="fa fa-users" aria-hidden="true"></i> Grupos</a></li>
+
+                  <li class="subsubmenu current">
+                    <a href="#">
+                      <i class="fa fa-star" aria-hidden="true"></i> Sesiones
+                    </a>
+                    <ul class="nav">
+                      <li><a href="sesiones.html"><i class="fa fa-cog" aria-hidden="true"></i>Administrar</a></li>
+                      <li><a href="consultar_sesiones.html"><i class="fa fa-search" aria-hidden="true"></i>Consultar</a></li>
+                    </ul>
+                  </li>
+                  <li  class="current"><a href="alumnos.html"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
+                  <li><a href="chequeo.html"><i class="fa fa-check-square-o" aria-hidden="true"></i> Chequeo</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="content-box-large">
+                    <div class="panel-heading">
+                      <div class="panel-title">Agregar Alumnos</div>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="col-md-11">
+                            <label for="nombre">Nombre:</label>
+                            <input id="nombre" class="form-control" type="text" name="nombre" value="" placeholder="Nombre" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="carrera">Carrera:</label>
+                            <input id="carrera" class="form-control" type="text" name="carrera" value="" placeholder="Carrera" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="nocontrol">No. Control:</label>
+                            <input id="nocontrol" class="form-control" type="text" name="nocontrol" value="" placeholder="No. Control" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="semestre">Semestre:</label>
+                            <input id="semestre" class="form-control" type="text" name="semestre" value="" placeholder="Semestre" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="curp">CURP:</label>
+                            <input id="curp" class="form-control" type="text" name="curp" value="" placeholder="CURP" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="sangre">Tipo de sangre:</label>
+                            <input id="sangre" class="form-control" type="text" name="sangre" value="" placeholder="Tipo de sangre" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label>Fecha de nacimiento:</label>
+                            <div class="form-group">
+                              <div class="input-group date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" value="" readonly>
+                      					<span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
+                              </div>
+                      				<input type="hidden" id="dtp_input2" value="" />
+                            </div>
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="traje">Traje de baño:</label>
+                            <input id="traje" class="form-control" type="text" name="traje" value="" placeholder="Traje de baño" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="clasificacion">Clasificación:</label>
+                            <select id="clasificación" class="form-control" method="get">
+                              <option value="" selected disabled>Seleccione una opción</option>
+                              <option>Extraescolar</option>
+                              <option>Pre-equipo</option>
+                              <option>Equipo</option>
+                            </select><br/>
+                          </div>
+                        </div>
+
+                        <div class="col-md-9 col-md-offset-2">
+                          <div class="row">
+                            <div class="col-md-3">
+                                <input type="button" class="btn btn-primary btn-block" id="guardar" value="Guardar">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="button" class="btn btn-primary btn-block" id="actualizar" value="Actualizar" disabled="true">
+                            </div>
+                            <div class="col-md-3">
+                              <input type="button" class="btn btn-primary btn-block" id="eliminar" value="Eliminar" disabled="true">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- FOTO DE PERFIL -->
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="content-box-large">
+                        <div class="panel-body">
+                          <div class="col-md-12">
+                            <label for="imagen">Imagen:</label><br/>
+                            <img src="images/perfil.jpg" width="100%"><br/><br/>
+                            <span class="btn btn-primary btn-file">
+                              Seleccionar imagen <input type="file" style="display: none;">
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="copy text-center">
+          Copyright 2017 <a href='#'>DesignMates</a>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-1.8.3-min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="bootstrap/js/bootstrap-datetimepicker.es.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/grupos.js"></script>
+    <script src="js/Tabullet.js"></script>
+    <script src="js/sesiones.js"></script>
+  </body>
+</html>
