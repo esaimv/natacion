@@ -3,6 +3,8 @@ function ejercicios(desc){
 }
 
 $(document).ready(function(){
+
+    $("#guardar").click(ingresar_sesion);
     obtenergrupos();
     function obtenergrupos(){
       $.getJSON('grupos.php', function(grupos){
@@ -11,14 +13,14 @@ $(document).ready(function(){
         })
       })
     }
-
     function ingresar_sesion(){
       var datos = {
-        'id_grupo'   : $("#grupo option:selected").value(),
-        'fecha'       : $("#fecha").value(),
-        'ejercicios'  : $("#ejercicios").value(),
+        'id_grupo'   : $("#grupo option:selected").val(),
+        'fecha'       : $("#fecha").val(),
+        'ejercicio'  : $("#descripcion").val(),
         'opcion'      : 'agregar'
       };
+      alert(datos.opcion);
       $.ajax({
         type    : 'POST',
         url     : 'sesiones.php',
