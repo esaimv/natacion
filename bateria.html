@@ -119,27 +119,6 @@
                     <div class="panel-body">
                       <div class="row">
                         <div class="col-md-12">
-                          <div class="col-md-7">
-                            <label for="grupo">Grupo:</label>
-                            <select id="grupo" class="form-control" method="get">
-                              <option value="" selected disabled>Seleccione</option>
-                              <option>Grupo 1</option>
-                              <option>Grupo 2</option>
-                              <option>Grupo 3</option>
-                            </select>
-                          </div>
-
-                          <div class="col-md-11">
-                            <label>Fecha:</label>
-                            <div class="form-group">
-                              <div class="input-group date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                <input class="form-control" size="16" type="text" value="" readonly>
-                                <span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
-                              </div>
-                              <input type="hidden" id="dtp_input2" value="" />
-                            </div>
-                          </div>
-
                           <div class="col-md-11">
                             <label for="nombre">Nombre:</label>
                             <input id="nombre" class="form-control" type="text" name="nombre" value="" placeholder="Nombre" method="post">
@@ -151,8 +130,43 @@
                           </div>
 
                           <div class="col-md-11">
-                            <label for="tiempo">Tiempo:</label>
-                            <input id="tiempo" class="form-control" type="text" name="tiempo" value="" placeholder="00:00:00" method="post"><br/>
+                            <label for="edad">Edad:</label>
+                            <input id="edad" class="form-control" type="text" name="edad" value="" placeholder="Edad" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="peso">Peso:</label>
+                            <input id="peso" class="form-control" type="text" name="peso" value="" placeholder="Peso" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="talla">Talla:</label>
+                            <input id="talla" class="form-control" type="text" name="talla" value="" placeholder="Talla" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="12min">12 min:</label>
+                            <input id="12min" class="form-control" type="text" name="12min" value="" placeholder="Metros" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="abd">Abd x min:</label>
+                            <input id="abd" class="form-control" type="text" name="abd" value="" placeholder="Abd x min" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="lag">Lag x min:</label>
+                            <input id="lag" class="form-control" type="text" name="lag" value="" placeholder="Lag x min" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="salto">Salto:</label>
+                            <input id="salto" class="form-control" type="text" name="salto" value="" placeholder="Salto" method="post">
+                          </div>
+
+                          <div class="col-md-11">
+                            <label for="flex">Flex:</label>
+                            <input id="flex" class="form-control" type="text" name="flex" value="" placeholder="Flex" method="post"><br/>
                           </div>
 
                         <div class="col-md-9 col-md-offset-2">
@@ -179,17 +193,22 @@
           <div class="col-md-12">
             <div class="content-box-large">
               <div class="panel-heading">
-                <div class="panel-title">Chequeos</div>
+                <div class="panel-title"></div>
               </div>
               <div class="table-responsive">
                 <table class="table table-hover" id="tabla_chequeo">
                   <thead>
                     <tr>
-                      <!-- <th id="tid">ID</th> -->
-                      <th id="tfecha">Fecha</th>
+                      <th id="tid">ID</th>
                       <th id="tnombre">Nombre</th>
-                      <th id="tejercicio">Ejercicio</th>
-                      <th id="ttiempo">Tiempo</th>
+                      <th id="tedad">Edad</th>
+                      <th id="tpeso">Peso</th>
+                      <th id="ttalla">Talla</th>
+                      <th id="t12min">12 min.</th>
+                      <th id="tabd">Abd x min.</th>
+                      <th id="tlag">Lag x min.</th>
+                      <th id="tsalto">Salto</th>
+                      <th id="tflex">Flex</th>
                     </tr>
                   </thead>
                   <tbody>
