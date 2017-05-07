@@ -82,18 +82,19 @@
                       <li><a href="consultar_sesiones.html"><i class="fa fa-search" aria-hidden="true"></i>Consultar</a></li>
                     </ul>
                   </li>
-                  <li  class="current"><a href="alumnos.html"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
-                  <li class="subsubmenu">
+                  <li><a href="alumnos.html"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
+
+                  <li class="subsubmenu current">
                     <a href="#">
                       <i class="fa fa-check-square-o" aria-hidden="true"></i> Chequeo
                     </a>
                     <ul class="nav">
-                      <li class="subsubmenu">
+                      <li class="subsubmenu current">
                         <a href="#" style="font-size: 11.9px;">
                           <i class="fa fa-address-book" aria-hidden="true"></i>Extraescolar
                         </a>
                         <ul class="nav">
-                          <li><a href="bateria.html" ><i class="fa fa-clipboard" aria-hidden="true"></i>Batería evaluación</a></li>
+                          <li class="current"><a href="bateria.html" ><i class="fa fa-clipboard" aria-hidden="true"></i>Batería evaluación</a></li>
                           <li><a href="asistencia.html"><i class="fa fa-list" aria-hidden="true"></i>Lista asistencia</a></li>
                         </ul>
                       </li>
@@ -110,10 +111,10 @@
           <div class="row">
             <div class="col-md-12">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                   <div class="content-box-large">
                     <div class="panel-heading">
-                      <div class="panel-title">Agregar Alumnos</div>
+                      <div class="panel-title">Batería de Evaluación</div>
                     </div>
                     <div class="panel-body">
                       <div class="row">
@@ -124,81 +125,49 @@
                           </div>
 
                           <div class="col-md-11">
-                            <label for="carrera">Carrera:</label>
-                            <select id="carrera" class="form-control" method="get">
-                              <option value="" selected disabled>Seleccione una opción</option>
-                              <option>Lic. Administración</option>
-                              <option>Ing. Biomédica</option>
-                              <option>Ing. Eléctrica</option>
-                              <option>Ing. Electrónica</option>
-                              <option>Ing. Gestión Empresarial</option>
-                              <option>Ing. Industrial</option>
-                              <option>Ing. Informática</option>
-                              <option>Ing. Mécanica</option>
-                              <option>Ing. Mecatrónica</option>
-                              <option>Ing. Sistemas Computacionales</option>
-                            </select><br/>
+                            <label for="ejercicio">Ejercicio:</label>
+                            <input id="ejercicio" class="form-control" type="text" name="ejercicio" value="" placeholder="Ejercicio" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label for="nocontrol">No. Control:</label>
-                            <input id="nocontrol" class="form-control" type="text" name="nocontrol" value="" placeholder="No. Control" method="post">
+                            <label for="edad">Edad:</label>
+                            <input id="edad" class="form-control" type="text" name="edad" value="" placeholder="Edad" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label for="semestre">Semestre:</label>
-                            <select id="semestre" class="form-control" method="get">
-                              <option value="" selected disabled>Seleccione una opción</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                              <option>6</option>
-                              <option>7</option>
-                              <option>8</option>
-                              <option>9</option>
-                              <option>10</option>
-                              <option>11</option>
-                            </select><br/>
+                            <label for="peso">Peso:</label>
+                            <input id="peso" class="form-control" type="text" name="peso" value="" placeholder="Peso" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label for="curp">CURP:</label>
-                            <input id="curp" class="form-control" type="text" name="curp" value="" placeholder="CURP" method="post">
+                            <label for="talla">Talla:</label>
+                            <input id="talla" class="form-control" type="text" name="talla" value="" placeholder="Talla" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label for="sangre">Tipo de sangre:</label>
-                            <input id="sangre" class="form-control" type="text" name="sangre" value="" placeholder="Tipo de sangre" method="post">
+                            <label for="12min">12 min:</label>
+                            <input id="12min" class="form-control" type="text" name="12min" value="" placeholder="Metros" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label>Fecha de nacimiento:</label>
-                            <div class="form-group">
-                              <div class="input-group date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                <input class="form-control" size="16" type="text" value="" readonly>
-                      					<span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
-                              </div>
-                      				<input type="hidden" id="dtp_input2" value="" />
-                            </div>
+                            <label for="abd">Abd x min:</label>
+                            <input id="abd" class="form-control" type="text" name="abd" value="" placeholder="Abd x min" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label for="traje">Traje de baño:</label>
-                            <input id="traje" class="form-control" type="text" name="traje" value="" placeholder="Traje de baño" method="post">
+                            <label for="lag">Lag x min:</label>
+                            <input id="lag" class="form-control" type="text" name="lag" value="" placeholder="Lag x min" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label for="clasificacion">Clasificación:</label>
-                            <select id="clasificación" class="form-control" method="get">
-                              <option value="" selected disabled>Seleccione una opción</option>
-                              <option>Extraescolar</option>
-                              <option>Pre-equipo</option>
-                              <option>Equipo</option>
-                            </select><br/>
+                            <label for="salto">Salto:</label>
+                            <input id="salto" class="form-control" type="text" name="salto" value="" placeholder="Salto" method="post">
                           </div>
-                        </div>
+
+                          <div class="col-md-11">
+                            <label for="flex">Flex:</label>
+                            <input id="flex" class="form-control" type="text" name="flex" value="" placeholder="Flex" method="post"><br/>
+                          </div>
 
                         <div class="col-md-9 col-md-offset-2">
                           <div class="row">
@@ -217,24 +186,35 @@
                     </div>
                   </div>
                 </div>
-                <!-- FOTO DE PERFIL -->
-                <div class="col-md-4">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="content-box-large">
-                        <div class="panel-body">
-                          <div class="col-md-12">
-                            <label for="imagen">Imagen:</label><br/>
-                            <img src="images/perfil.jpg" width="100%"><br/><br/>
-                            <span class="btn btn-primary btn-file">
-                              Seleccionar imagen <input type="file" style="display: none;">
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="content-box-large">
+              <div class="panel-heading">
+                <div class="panel-title"></div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover" id="tabla_chequeo">
+                  <thead>
+                    <tr>
+                      <th id="tid">ID</th>
+                      <th id="tnombre">Nombre</th>
+                      <th id="tedad">Edad</th>
+                      <th id="tpeso">Peso</th>
+                      <th id="ttalla">Talla</th>
+                      <th id="t12min">12 min.</th>
+                      <th id="tabd">Abd x min.</th>
+                      <th id="tlag">Lag x min.</th>
+                      <th id="tsalto">Salto</th>
+                      <th id="tflex">Flex</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
