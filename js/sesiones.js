@@ -3,9 +3,9 @@ function ejercicios(desc){
 }
 
 $(document).ready(function(){
-
-    $("#guardar").click(ingresar_sesion);
     obtenergrupos();
+    $("#guardar").click(ingresar_sesion);
+
     function obtenergrupos(){
       $.getJSON('grupos.php', function(grupos){
         $.each(grupos, function(i, grupos){
@@ -20,7 +20,7 @@ $(document).ready(function(){
         'ejercicio'  : $("#descripcion").val(),
         'opcion'      : 'agregar'
       };
-      alert(datos.opcion);
+      alert(datos.id_grupo + datos.fecha + datos.ejercicio);
       $.ajax({
         type    : 'POST',
         url     : 'sesiones.php',
@@ -29,6 +29,7 @@ $(document).ready(function(){
         encode  : true
       })
       .done(function(datosr){
+        alert("Ingresao");
         alert(datosr.mensaje);
         location.reload();
       })
