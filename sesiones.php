@@ -10,13 +10,16 @@
     if($opcion == 'agregar'){
       // Variables de entrada
       $fecha = $_POST['fecha'];
-      $gupo  = $_POST['grupo'];
-      $descripcion = $_POST['descripcion'];
+      $id_gupo  = $_POST['id_grupo'];
+      $ejercicios = $_POST['ejercicio'];
       //Vairbale de query
-      $q = "INSERT INTO sesion (grupo, fecha, descripcion) "+
-            "VALUES (".$grupo.", '".$fecha."', '".$descripcion."');";
+
+      $q = "INSERT INTO sesiones (id_grupo, ejercicios, fecha) VALUES (1, '2', '3');";
+            // $q = "INSERT INTO sesiones (id_grupo, ejercicios, fecha) "+
+            //       "VALUES (".$id_grupo.", '".$ejercicios."', '".$fecha."');";
       mysqli_query($con, $q) or die ("Problema con query");
       $datos['mensaje'] = "Sesion agregada";
+
     }else{
       $q = "SELECT * FROM grupos";// FALTAAA
       $res = mysqli_query($con, $q) or die ("Problema con query");

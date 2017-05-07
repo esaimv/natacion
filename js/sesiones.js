@@ -4,6 +4,38 @@ function ejercicios(desc){
 
 $(document).ready(function(){
 
+    $("#guardar").click(ingresar_sesion);
+    obtenergrupos();
+    function obtenergrupos(){
+      $.getJSON('grupos.php', function(grupos){
+        $.each(grupos, function(i, grupos){
+          $("#grupo").append('<option value="'+grupos.id+'">'+grupos.nombre+'</option>');
+        })
+      })
+    }
+    function ingresar_sesion(){
+      var datos = {
+        'id_grupo'   : $("#grupo option:selected").val(),
+        'fecha'       : $("#fecha").val(),
+        'ejercicio'  : $("#descripcion").val(),
+        'opcion'      : 'agregar'
+      };
+      alert(datos.opcion);
+      $.ajax({
+        type    : 'POST',
+        url     : 'sesiones.php',
+        data    : datos,
+        dataType: 'json',
+        encode  : true
+      })
+      .done(function(datosr){
+        alert(datosr.mensaje);
+        location.reload();
+      })
+    }
+
+
+
     $('.form_date').datetimepicker({
       language:  'es',
       weekStart: 1,
