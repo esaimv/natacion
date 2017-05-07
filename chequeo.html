@@ -82,8 +82,9 @@
                       <li><a href="consultar_sesiones.html"><i class="fa fa-search" aria-hidden="true"></i>Consultar</a></li>
                     </ul>
                   </li>
-                  <li  class="current"><a href="alumnos.html"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
-                  <li class="subsubmenu">
+                  <li><a href="alumnos.html"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
+
+                  <li class="subsubmenu current">
                     <a href="#">
                       <i class="fa fa-check-square-o" aria-hidden="true"></i> Chequeo
                     </a>
@@ -97,9 +98,10 @@
                           <li><a href="asistencia.html"><i class="fa fa-list" aria-hidden="true"></i>Lista asistencia</a></li>
                         </ul>
                       </li>
-                      <li><a href="chequeo.html"><i class="fa fa-anchor" aria-hidden="true"></i>Equipo</a></li>
+                      <li class="current"><a href="chequeo.html"><i class="fa fa-anchor" aria-hidden="true"></i>Equipo</a></li>
                     </ul>
                   </li>
+
                 </ul>
               </li>
             </ul>
@@ -110,70 +112,39 @@
           <div class="row">
             <div class="col-md-12">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                   <div class="content-box-large">
                     <div class="panel-heading">
-                      <div class="panel-title">Agregar Alumnos</div>
+                      <div class="panel-title">Chequeo Equipo y Pre-equipo</div>
                     </div>
                     <div class="panel-body">
                       <div class="row">
                         <div class="col-md-12">
+                          <div class="col-md-11">
+                            <label>Fecha:</label>
+                            <div class="form-group">
+                              <div class="input-group date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" value="" readonly>
+                                <span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
+                              </div>
+                              <input type="hidden" id="dtp_input2" value="" />
+                            </div>
+                          </div>
+
                           <div class="col-md-11">
                             <label for="nombre">Nombre:</label>
                             <input id="nombre" class="form-control" type="text" name="nombre" value="" placeholder="Nombre" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label for="carrera">Carrera:</label>
-                            <input id="carrera" class="form-control" type="text" name="carrera" value="" placeholder="Carrera" method="post">
+                            <label for="ejercicio">Ejercicio:</label>
+                            <input id="ejercicio" class="form-control" type="text" name="ejercicio" value="" placeholder="Ejercicio" method="post">
                           </div>
 
                           <div class="col-md-11">
-                            <label for="nocontrol">No. Control:</label>
-                            <input id="nocontrol" class="form-control" type="text" name="nocontrol" value="" placeholder="No. Control" method="post">
+                            <label for="tiempo">Tiempo:</label>
+                            <input id="tiempo" class="form-control" type="text" name="tiempo" value="" placeholder="00:00:00" method="post"><br/>
                           </div>
-
-                          <div class="col-md-11">
-                            <label for="semestre">Semestre:</label>
-                            <input id="semestre" class="form-control" type="text" name="semestre" value="" placeholder="Semestre" method="post">
-                          </div>
-
-                          <div class="col-md-11">
-                            <label for="curp">CURP:</label>
-                            <input id="curp" class="form-control" type="text" name="curp" value="" placeholder="CURP" method="post">
-                          </div>
-
-                          <div class="col-md-11">
-                            <label for="sangre">Tipo de sangre:</label>
-                            <input id="sangre" class="form-control" type="text" name="sangre" value="" placeholder="Tipo de sangre" method="post">
-                          </div>
-
-                          <div class="col-md-11">
-                            <label>Fecha de nacimiento:</label>
-                            <div class="form-group">
-                              <div class="input-group date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                <input class="form-control" size="16" type="text" value="" readonly>
-                      					<span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
-                              </div>
-                      				<input type="hidden" id="dtp_input2" value="" />
-                            </div>
-                          </div>
-
-                          <div class="col-md-11">
-                            <label for="traje">Traje de baño:</label>
-                            <input id="traje" class="form-control" type="text" name="traje" value="" placeholder="Traje de baño" method="post">
-                          </div>
-
-                          <div class="col-md-11">
-                            <label for="clasificacion">Clasificación:</label>
-                            <select id="clasificación" class="form-control" method="get">
-                              <option value="" selected disabled>Seleccione una opción</option>
-                              <option>Extraescolar</option>
-                              <option>Pre-equipo</option>
-                              <option>Equipo</option>
-                            </select><br/>
-                          </div>
-                        </div>
 
                         <div class="col-md-9 col-md-offset-2">
                           <div class="row">
@@ -192,24 +163,30 @@
                     </div>
                   </div>
                 </div>
-                <!-- FOTO DE PERFIL -->
-                <div class="col-md-4">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="content-box-large">
-                        <div class="panel-body">
-                          <div class="col-md-12">
-                            <label for="imagen">Imagen:</label><br/>
-                            <img src="images/perfil.jpg" width="100%"><br/><br/>
-                            <span class="btn btn-primary btn-file">
-                              Seleccionar imagen <input type="file" style="display: none;">
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="content-box-large">
+              <div class="panel-heading">
+                <div class="panel-title">Chequeos</div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover" id="tabla_chequeo">
+                  <thead>
+                    <tr>
+                      <!-- <th id="tid">ID</th> -->
+                      <th id="tfecha">Fecha</th>
+                      <th id="tnombre">Nombre</th>
+                      <th id="tejercicio">Ejercicio</th>
+                      <th id="ttiempo">Tiempo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
