@@ -1,5 +1,14 @@
 $(document).ready(function(){
-
+  $("#usuario").keypress(function(e){
+    if(e.which == 13) {
+      validar_login()
+    }
+  })
+  $("#clave").keypress(function(e) {
+    if(e.which == 13) {
+      validar_login()
+    }
+  })
   var href = window.location.pathname;
 
   if(href != "/natacion/index.html"){
@@ -17,18 +26,20 @@ $(document).ready(function(){
     })
   }
 
-  $("#login").click(function(){
+  $("#login").click(validar_login)
+
+  function validar_login(){
     var datos = {
       usuario : $("#usuario").val(),
       clave   : $("#clave").val(),
       login  : true
-    };
+    }
     var opciones = {
       url       : 'login.php',
       type      : 'POST',
       data      : datos,
       dataType  : 'json'
-    };
+    }
     $.ajax(opciones)
       .done(function(respuesta){
         if(respuesta.error == "false"){
@@ -37,5 +48,5 @@ $(document).ready(function(){
           alert(respuesta.error);
         }
       })
-  });
-});
+    }
+  })

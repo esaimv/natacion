@@ -139,7 +139,7 @@
 
                         <div class="col-md-7">
                           <label for="ejercicio">Ejercicio:</label>
-                          <input class="form-control" type="text" name="ejercicio" value="">
+                          <input class="form-control" type="text" id="ejercicio" value="">
                         </div>
 
                         <div class="col-md-2" style="padding-top:38px;">
@@ -161,7 +161,10 @@
                               <input type="button" class="btn btn-primary btn-block" id="actualizar" value="Actualizar" disabled="true">
                           </div>
                           <div class="col-md-3">
-                            <input type="button" class="btn btn-primary btn-block" id="eliminar" value="Eliminar" disabled="true">
+                            <input type="button" class="btn btn-danger btn-block" id="eliminar" value="Eliminar" disabled="true">
+                          </div>
+                          <div class="col-md-3">
+                            <input type="button" class="btn btn-success btn-block" id="buscar" value="Buscar" data-toggle="modal" data-target="#modal_sesiones">
                           </div>
                         </div>
                       </div>
@@ -194,5 +197,48 @@
   <script src="js/login.js"></script>
   <script src="js/Tabullet.js"></script>
   <script src="js/sesiones.js"></script>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="modal_sesiones" role="dialog">
+    <div class="modal-dialog" id="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-6 col-md-offset-3">
+            <label>Buscar por fecha</label>
+            <div class="form-group">
+              <div class="input-group form_date date col-md-7" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <input id="filtrar" class="form-control" size="16" type="text">
+                <span class="input-group-addon  "><span class="fa fa-calendar"></span></span>
+              </div>
+              <input type="hidden" id="dtp_input2" value="" />
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover" id="tabla_modal">
+              <thead>
+                <tr>
+                  <th id="tid">ID</th>
+                  <th id="tgrupo">Grupo</th>
+                  <th id="tfecha">Fecha</th>
+                  <th id="tver">Editar</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-body" class="buscar" style="text-align:center;">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cerrar_modal" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

@@ -132,7 +132,7 @@
                       <th id="tver">Descripcion</th>
                     </tr>
                   </thead>
-                  <tbody class="buscar">
+                  <tbody class="buscar" style="text-align:center;">
                   </tbody>
                 </table>
               </div>
@@ -160,5 +160,30 @@
   <script src="js/login.js"></script>
   <script src="js/Tabullet.js"></script>
   <script src="js/sesiones.js"></script>
+
+
+  <!-- Modal -->
+    <div class="modal fade" id="modal_ejercicio" role="dialog">
+      <div class="modal-dialog" id="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <center>
+              <h1 class="ejercicios_texto">
+                Ejercicio:
+            </center><br><br>
+              <h3><p id="texto"></p></h3>
+              </h1>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="cerrar_ejercicio" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>
