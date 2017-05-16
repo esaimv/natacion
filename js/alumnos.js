@@ -77,6 +77,7 @@
                 cache: false
             }).done(function(data){
             		alert("Actualizado correctamente")
+                location.reload();
             });
           }else{
             alert(datosr.mensaje);

@@ -88,13 +88,6 @@
           }else{
             if($opcion == 'cambiarfoto'){
               $id = $_POST['id'];
-              $q = "SELECT * FROM alumnos WHERE id = ".$id."";
-              $res = mysqli_query($con, $q) or die ("Problema con query");
-              while ($row = mysqli_fetch_array($res)){
-                $foto = $row['foto'];
-              }
-              unlink('fotos/'.$foto);
-
               if($_FILES['foto']['type'] == 'image/png'){
                 $tipo = '.png';
               }else{
@@ -103,11 +96,19 @@
                 }
               }
               $nombre_archivo = "alumno".$id.$tipo;
-              
-              // $tipo_archivo = $_FILES['foto']['type'];
               $tmp_archivo = $_FILES['foto']['tmp_name'];
               $archivador = 'fotos/' . $nombre_archivo;
+
+              $res = mysqli_query($con, "SELECT * FROM alumnos WHERE id = ".$id.";") or die ("Problema con query");
+              while ($row = mysqli_fetch_array($res)){
+                $foto = $row['foto'];
+              }
+              if(unlink('fotos/'.$foto)){
+                move_uploaded_file($tmp_archivo, $archivador);
+                mysqli_query($con, "UPDATE alumnos SET foto='".$nombre_archivo."' WHERE id = ".$id.";");
+              }
               move_uploaded_file($tmp_archivo, $archivador);
+              mysqli_query($con, "UPDATE alumnos SET foto='".$nombre_archivo."' WHERE id = ".$id.";");
               echo json_encode($datos);
             }
           }
