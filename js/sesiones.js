@@ -40,7 +40,6 @@ function ejercicios_modal(id_sesion, grupo, fecha, descripcion, id_grupo){
         'ejercicio'  : $("#descripcion").val(),
         'opcion'      : 'actualizar'
       };
-      alert("sesion-"+id_sesion+ " grupo-"+datos.id_grupo+ " fecha-"+datos.fecha + datos.ejercicio +datos.opcion)
       $.ajax({
         type    : 'POST',
         url     : 'sesiones.php',

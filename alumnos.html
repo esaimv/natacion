@@ -176,9 +176,9 @@
                           <div class="col-md-11">
                             <label>Fecha de nacimiento:</label>
                             <div class="form-group">
-                              <div class="input-group date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                <input class="form-control" size="16" type="text" value="" readonly>
-                      					<span class="input-group-addon form_date"><span class="fa fa-calendar"></span></span>
+                              <div class="input-group form_date date col-md-6" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input id="fecha" class="form-control" size="16" type="text" value="" readonly>
+                      					<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                               </div>
                       				<input type="hidden" id="dtp_input2" value="" />
                             </div>
@@ -191,7 +191,7 @@
 
                           <div class="col-md-11">
                             <label for="clasificacion">Clasificación:</label>
-                            <select id="clasificación" class="form-control" method="get">
+                            <select id="clasificacion" class="form-control" method="get">
                               <option value="" selected disabled>Seleccione una opción</option>
                               <option>Extraescolar</option>
                               <option>Pre-equipo</option>
@@ -211,6 +211,9 @@
                             <div class="col-md-3">
                               <input type="button" class="btn btn-primary btn-block" id="eliminar" value="Eliminar" disabled="true">
                             </div>
+                            <div class="col-md-3">
+                              <input type="button" class="btn btn-success btn-block" id="buscar" value="Buscar" data-toggle="modal" data-target="#modal_alumnos">
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -225,10 +228,15 @@
                         <div class="panel-body">
                           <div class="col-md-12">
                             <label for="imagen">Imagen:</label><br/>
-                            <img src="images/perfil.jpg" width="100%"><br/><br/>
-                            <span class="btn btn-primary btn-file">
-                              Seleccionar imagen <input type="file" style="display: none;">
-                            </span>
+                            <img id="imgfoto" src="images/perfil.jpg" width="100%"><br/><br/>
+                            <div class="col-md-12">
+                              <label>
+                                Subir imagen
+                                <span>
+                                  <input type="file" id="foto" name="foto"/>
+                                </span>
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -258,8 +266,50 @@
     <script src="bootstrap/js/bootstrap-datetimepicker.es.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/login.js"></script>
-    <script src="js/grupos.js"></script>
+    <script src="js/alumnos.js"></script>
+
     <script src="js/Tabullet.js"></script>
-    <script src="js/sesiones.js"></script>
-  </body>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="modal_alumnos" role="dialog">
+    <div class="modal-dialog" id="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-6 col-md-offset-3">
+            <label>Buscar</label>
+            <input id="filtrar" class="form-control" size="16" type="text">
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover" id="tabla_modal">
+              <thead>
+                <tr>
+                  <th id="tid">ID</th>
+                  <th id="tnombre">Nombre</th>
+                  <th id="tcarrera">Carrera</th>
+                  <th id="tno_control">No. de Control</th>
+                  <th id="tsemestre">Semestre</th>
+                  <th id="tsangre">Tipo de Sangre</th>
+                  <th id="tfecha">Fecha nac.</th>
+                  <th id="tclasificacion">Clasificacion</th>
+                  <th id="editar">Editar</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-body" class="buscar" style="text-align:center;">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cerrar_modal" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
 </html>
