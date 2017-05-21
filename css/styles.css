@@ -646,6 +646,11 @@ body {
       text-align:center;
       padding-bottom:10px;
    }
+   .logo-ith{
+     text-align:center;
+     padding-bottom:10px;
+     width: 80%;
+   }
    .header .form{
       margin:10px auto;
    }
