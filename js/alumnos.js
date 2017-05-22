@@ -1,6 +1,6 @@
-  
+
   function actualizar(){
-    
+
   }
   function editar_alumno(id, no, ca, co, se, sa, fe, cl, cu, fo, tr){
     $("#modal_alumnos").modal('toggle');
@@ -94,7 +94,7 @@
 
   $(document).ready(function(){
     $("#modal-dialog").width('80%')
-    $('.form_date').datetimepicker(opciones_time});
+    $('.form_date').datetimepicker(opciones_time);
 
     $("#guardar").click(guardar_alumno);
     $("#buscar").click(alumnos_modal);
@@ -123,7 +123,7 @@
         }).show();
   }
 
-  function alumnos_modal(){ 
+  function alumnos_modal(){
     $("#tabla-body").empty();
     $.getJSON("alumnos.php", function(tablajson){
       $.each(tablajson, function(i, tablajson){

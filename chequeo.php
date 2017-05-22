@@ -23,8 +23,8 @@
 	    }else{
     	    if($opcion == 'actualizar'){
 
-	          	$id = $_POST['id'];
-	          	$no = $_POST['nombre'];
+	         	$id = $_POST['id'];
+	          $no = $_POST['nombre'];
 	      		$ej = $_POST['ejercicio'];
 	      		$fe = $_POST['fecha'];
 	      		$ti = $_POST['tiempo'];
