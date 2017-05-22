@@ -1,3 +1,7 @@
+  
+  function actualizar(){
+    
+  }
   function editar_alumno(id, no, ca, co, se, sa, fe, cl, cu, fo, tr){
     $("#modal_alumnos").modal('toggle');
     $("#nombre").val(no)
@@ -90,7 +94,17 @@
 
   $(document).ready(function(){
     $("#modal-dialog").width('80%')
-    $('.form_date').datetimepicker({
+    $('.form_date').datetimepicker(opciones_time});
+
+    $("#guardar").click(guardar_alumno);
+    $("#buscar").click(alumnos_modal);
+
+    $$('#filtrar').change(filtrar);
+    $('#filtrar').keyup(filtrar);
+
+  })
+
+  var opciones_time = {
       language:  'es',
       weekStart: 1,
       todayBtn:  1,
@@ -99,29 +113,17 @@
       startView: 2,
       minView: 2,
       forceParse: 0
-    });
-    $("#guardar").click(guardar_alumno);
-    $("#buscar").click(alumnos_modal);
+  }
 
-    $('#filtrar').change(function () {
-        var rex = new RegExp($(this).val(), 'i');
+  function filtrar(){
+  var rex = new RegExp($(this).val(), 'i');
         $('.buscar tr').hide();
         $('.buscar tr').filter(function () {
             return rex.test($(this).text());
         }).show();
-    })
-    $('#filtrar').keyup(function () {
-        var rex = new RegExp($(this).val(), 'i');
-        $('.buscar tr').hide();
-        $('.buscar tr').filter(function () {
-            return rex.test($(this).text());
-        }).show();
-    })
+  }
 
-  })
-
-  function alumnos_modal(){
-    $("#filtrar").focus();
+  function alumnos_modal(){ 
     $("#tabla-body").empty();
     $.getJSON("alumnos.php", function(tablajson){
       $.each(tablajson, function(i, tablajson){
@@ -191,6 +193,4 @@
     }).done(function(data){
     		alert("Guardado correctamente")
     });
-
-
-}
+  }
