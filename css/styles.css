@@ -9,7 +9,9 @@ body {
 .checkbox{
   padding: 0px !important;
 }
-
+.nav > li > a:hover, .nav > li > a:focus{
+  background-color:inherit !important;
+}
 .page-content > .row {
   margin-left: 0px !important;
   margin-right: 0px !important;
@@ -28,13 +30,37 @@ body {
        url('http://fonts.gstatic.com/s/dancingscript/v8/KGBfwabt0ZRLA5W1ywjowQGh4C6WC-OkTmtn1VvY3nc.ttf') format('truetype'),
        url('http://fonts.gstatic.com/l/font?kit=KGBfwabt0ZRLA5W1ywjowetrk9OkeHJKmhbkTjrel6s&skey=4fd71febfd48d6c&v=v8#DancingScript') format('svg');
 }
+@font-face {
+  font-family: 'Bree Serif';
+  font-weight: 400;
+  font-style: normal;
+  src: url('http://fonts.gstatic.com/s/breeserif/v5/LQ7WLTaITDg4OSRuOZCps1QlYEbsez9cZjKsNMjLOwM.eot');
+  src: url('http://fonts.gstatic.com/s/breeserif/v5/LQ7WLTaITDg4OSRuOZCps1QlYEbsez9cZjKsNMjLOwM.eot?#iefix') format('embedded-opentype'),
+       local('Bree Serif'),
+       local('Bree-Serif-regular'),
+       url('http://fonts.gstatic.com/s/breeserif/v5/LQ7WLTaITDg4OSRuOZCpswzyDMXhdD8sAj6OAJTFsBI.woff2') format('woff2'),
+       url('http://fonts.gstatic.com/s/breeserif/v5/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff') format('woff'),
+       url('http://fonts.gstatic.com/s/breeserif/v5/LQ7WLTaITDg4OSRuOZCpsy3USBnSvpkopQaUR-2r7iU.ttf') format('truetype'),
+       url('http://fonts.gstatic.com/l/font?kit=LQ7WLTaITDg4OSRuOZCps6WUboTb-jS2tyCOQMtm97g&skey=31c3ad25dd3d74b0&v=v5#BreeSerif') format('svg');
+}
 .cursiva {
   margin: 5%;
   font-family: 'Dancing Script';
   font-size: 30px;
   text-align: right;
 }
-
+.panel-title{
+  font-family: 'Bree Serif', serif !important;
+}
+.modal-header{
+  border-bottom: none !important;
+}
+.modal-footer{
+  border-top: none !important;
+}
+a:hover{
+  text-decoration: none !important;
+}
 /* Footer */
 
 footer{
