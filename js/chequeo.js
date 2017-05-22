@@ -1,23 +1,38 @@
 
 $(document).ready(function(){
-	obtener_alumnos();
-	$("#guardar").click(guardar);	
-	$("#buscar").click(buscar);
-
-	$('#filtrar').change(filtrar)
-    $('#filtrar').keyup(filtrar)
-
-    $('.form_date').datetimepicker(opciones_time);
-})
-
-function ready2(id, no, ej, fe, ti){
 
 	$('.form_date').datetimepicker(opciones_time);
+	obtener_alumnos();
+	obtener_chequeo();
+	$("#guardar").click(guardar);
+	$('#filtrar').change(filtrar)
+  $('#filtrar').keyup(filtrar)
 
-	$("#actualizar").click(actualizar(id));
-	$("#eliminar").click(eliminar(id));
-	$('#filtrar').change(filtrar);
-    $('#filtrar').keyup(filtrar);
+
+})
+
+function obtener_chequeo(){
+		$.getJSON("chequeo.php",function(tchequeo){
+			cargar_chequeo(tchequeo);
+		});
+
+	function cargar_chequeo(tchequeo){
+		$.each(tchequeo, function(i, tchequeo){
+			var datos_enviar = tchequeo.id +", \""+tchequeo.nombre+
+					 "\", \""+tchequeo.fecha+"\", \""+tchequeo.ejercicio+""+
+					 "\", "+tchequeo.tiempo;
+			var datos_tabla = "<tr>"+
+					"<td>"+tchequeo.id+"</td>"+
+					"<td>"+tchequeo.nombre+"</td>"+
+					"<td>"+tchequeo.fecha+"</td>"+
+					"<td>"+tchequeo.ejercicio+"</td>"+
+					"<td>"+tchequeo.tiempo+"</td>"+
+					"<td><input type='button' class='btn btn-primary' value='Editar' onclick='editar_chequeo("+datos_enviar+")'></td>"+
+				"</tr>";
+
+				$("#tabla_chequeo").append(datos_tabla);
+	    })
+	}
 }
 
 var opciones_time = {
@@ -39,26 +54,7 @@ function filtrar(){
         }).show();
 }
 
-
-function buscar(){
-	$("#tabla-body").empty();
-	$.each(tchequeo, function(i, tchequeo){        
-		var datos_enviar = tchequeo.id +", \""+tchequeo.nombre+             
-             ", \""+tchequeo.ejercicio+"\", \""+tchequeo.fecha+"\", "+tchequeo.tiempo;
-        var datos_tabla = "<tr>"+
-            "<td>"+tchequeo.id+"</td>"+
-            "<td>"+tchequeo.nombre+"</td>"+
-            "<td>"+tchequeo.fecha+"</td>"+
-            "<td>"+tchequeo.ejercicio+"</td>"+
-            "<td>"+tchequeo.tiempo+"</td>"+
-            "<td><input type='button' class='btn btn-primary' value='Editar' onclick='editar_chequeo("+datos_enviar+")'></td>"+
-          "</tr>";
-        $("#tabla_modal").append(datos_tabla);
-    })    
-}
-
-function editar_chequeo(id, no, ej, fe, ti){
-	$("#modal_chequeo").modal('toggle');
+function editar_chequeo(id, no, fe, ej, ti){
 	$("#guardar").attr('disabled', true);
 	$("#actualizar").attr('disabled', false);
 	$("#eliminar").attr('disabled', false);
@@ -68,54 +64,60 @@ function editar_chequeo(id, no, ej, fe, ti){
 	$("#fecha").val(fe);
 	$("#tiempo").val(ti);
 
-	$(document).ready(ready2(id, no, ej, fe, ti));
-
-}
-
-function eliminar(){
-	var opciones = {
-		type    : 'POST',
+	$(document).ready(function(){
+		$('.form_date').datetimepicker(opciones_time);
+		$("#eliminar").click(function(){
+			var opciones = {
+				type    : 'POST',
       	url     : 'chequeo.php',
-      	data    : {'id': id},
+      	data    : {id: id, opcion : "eliminar"},
       	dataType: 'json',
       	encode  : true
-	}
-	$.ajax(opciones).done(function(drecibidos){
-		alert(drecibidos.mensaje);
-	})
-}
-
-function actualizar(){
-	var datos = {
-		id			: id, 
-		fecha 		: $("#fecha").val(), 
-		nombre		: $("#nombre").val(), 
-		ejercicio	: $("#ejercicio").val(), 
-		tiempo  	: $("#tiempo").val(),
-		opcion 		: "actualizar"
-	}
-	var opciones = {
-		type    : 'POST',
+			}
+			$.ajax(opciones).done(function(drecibidos){
+				alert(drecibidos.mensaje);
+				location.reload();
+			})
+		});
+		$("#actualizar").click(function(){
+			var datos = {
+				id				: id,
+				fecha 		: $("#fecha").val(),
+				nombre		: $("#nombre").val(),
+				ejercicio	: $("#ejercicio").val(),
+				tiempo  	: $("#tiempo").val(),
+				opcion 		: "actualizar"
+			}
+			var opciones = {
+				type    : 'POST',
       	url     : 'chequeo.php',
       	data    : datos,
       	dataType: 'json',
       	encode  : true
-	}
-	$.ajax(opciones).done(function(drecibidos){
-		alert(drecibidos.mensaje);
-	})
+			}
+			$.ajax(opciones).done(function(drecibidos){
+				alert(drecibidos.mensaje);
+				location.reload();
+			})
+		});
+		$("#eliminar").click(eliminar(id));
+		$('#filtrar').change(filtrar);
+	  $('#filtrar').keyup(filtrar);
+	});
+
 }
 
 function guardar(){
 	var datos = {
-		fecha 		: $("#fecha").val(), 
-		nombre		: $("#nombre").val(), 
-		ejercicio	: $("#ejercicio").val(), 
+		fecha 		: $("#fecha").val(),
+		nombre		: $("#nombre").val(),
+		ejercicio	: $("#ejercicio").val(),
 		tiempo  	: $("#tiempo").val(),
-		opcion 		: "guardar",  
+		opcion 		: "guardar",
 	}
+
 	var opciones = {
-		type    : 'POST',
+				type    : 'POST',
       	url     : 'chequeo.php',
       	data    : datos,
       	dataType: 'json',
@@ -124,6 +126,7 @@ function guardar(){
 
 	$.ajax(opciones).done(function(drecibidos){
 		alert(drecibidos.mensaje);
+		location.reload();
 	})
 }
 
@@ -134,10 +137,11 @@ function obtener_alumnos(){
 }
 
 function cargar_alumnos(talumnos){
-	$.each(talumnos, function(i, talumnos){        
+	$.each(talumnos, function(i, talumnos){
 		if(talumnos.clasificacion == "Equipo" || talumnos.clasificacion == "Pre-equipo"){
-			var nalumno =  "<option value='"+talumnos.nombre+"'>"+talumnos.nombre;+"</option>";         
-        	$("#nombre").append(nalumno);  	
-		}        
-    })    
+			var nalumno =  "<option value='"+talumnos.nombre+"'>"+talumnos.nombre+"</option>";
+
+        	$("#nombre").append(nalumno);
+				}
+    })
 }
