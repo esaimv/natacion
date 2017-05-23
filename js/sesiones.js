@@ -53,7 +53,6 @@ function ejercicios_modal(id_sesion, grupo, fecha, descripcion, id_grupo){
       })
     })
     $("#eliminar").click(function(){
-
     })
   })
 }
@@ -62,7 +61,7 @@ $(document).ready(function(){
     $("#modal-dialog").width('70%')
     obtenergrupos();
     $("#guardar").click(ingresar_sesion);
-    $("#buscar").click(obetenergrupos_modal);
+    $("#buscar").click(obtenergrupos_modal);
     $("#agregar").click(agregar_ejercicio);
     $("#ejercicio").keypress(function(e) {
     if(e.which == 13) {
@@ -86,7 +85,8 @@ $(document).ready(function(){
         })
       })
     }
-    function obetenergrupos_modal(){
+
+    function obtenergrupos_modal(){
       $("#tabla-body").empty();
       $.getJSON("sesiones.php", function(tablajson){
         $.each(tablajson, function(i, tablajson){
@@ -103,7 +103,7 @@ $(document).ready(function(){
               "<td><input type='button' class='btn btn-primary' value='Editar' onclick='ejercicios_modal("+datos_enviar+")'></td>"+
             "</tr>";
           $("#tabla_modal").append(datos_tabla);
-        })
+         })
       })
     }
     function ingresar_sesion(){

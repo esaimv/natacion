@@ -2,8 +2,46 @@ $(document).ready(function(){
   obtener_grupos();
   $("#grupo").change(cargar);
   obtener_fecha();
+  $("#confirmar").click(function(){
+    alert("Asistencia Guardada");
+    location.reload();
+  });
+  $("#modal-dialog").width('70%')
+  $("#buscar").click(modal_asistencia);
 
+  $('#filtrar').change(function () {
+    $("#body-modal").empty();
+      $.getJSON("asistencia.php", function(tbuscar){
+        $.each(tbuscar, function(i, tbuscar){
+          if(tbuscar.fecha == $("#filtrar").val()){
+            var datos_buscar = "<tr>"+
+                "<td>"+tbuscar.id+"</td>"+
+                "<td>"+tbuscar.control+"</td>"+
+                "<td>"+tbuscar.nombre+"</td>"+
+                "<td>"+tbuscar.fecha+"</td>"+
+              "</tr>";
+            $("#tabla_modal").append(datos_buscar);
+          }
+      })
+    })
+  })
 })
+
+
+function modal_asistencia(){
+  $('.form_date').datetimepicker({
+    language:  'es',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0
+  });
+}
+
+
 var strDate;
 function obtener_fecha(){
   var d = new Date();
@@ -46,9 +84,7 @@ function obtener_fecha(){
       mes = 'Diciembre';
       break;
     default:
-
   }
-
   strDate =  d.getDate() + " " + mes + " " + d.getFullYear();
 }
 
@@ -73,6 +109,7 @@ function cargar(){
 }
 
 function cargar_alumnos(tablajson, grupo){
+  $("#body-tabla").empty();
   $.each(tablajson, function(i, tablajson){
     if(tablajson.grupo == grupo){
       var datos_enviar = tablajson.id + ", \""+tablajson.control+"\","+
@@ -93,7 +130,8 @@ function guardar_arreglo(id, control, nombre, fecha){
     id  : id,
     control: control,
     nombre: nombre,
-    fecha: fecha
+    fecha: fecha,
+    opcion : 'guardar'
   }
   var opciones = {
 		type    : 'POST',

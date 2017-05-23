@@ -6,6 +6,7 @@
   <meta name="viewports" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <!-- Font Icons -->
   <link rel="stylesheet" href="bootstrap/css/font-awesome.min.css">
   <!-- styles -->
@@ -45,7 +46,6 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeInUp">
-                      <li><a href="profile.html">Perfil</a></li>
                       <li><a href="destroy.php">Cerrar sesión</a></li>
                     </ul>
                   </li>
@@ -70,7 +70,7 @@
                 <span class="caret pull-right"></span>
               </a>
               <ul class="nav">
-                <li class="current"><a href="principal.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+                <li><a href="principal.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
                 <li><a href="grupos.html"><i class="fa fa-users" aria-hidden="true"></i> Grupos</a></li>
 
                 <li class="subsubmenu">
@@ -83,18 +83,18 @@
                   </ul>
                 </li>
                 <li><a href="alumnos.html"><i class="fa fa-male" aria-hidden="true"></i> Alumnos</a></li>
-                <li class="subsubmenu">
+                <li class="subsubmenu current">
                   <a href="#">
                     <i class="fa fa-check-square-o" aria-hidden="true"></i> Chequeo
                   </a>
                   <ul class="nav">
-                    <li class="subsubmenu">
+                    <li class="subsubmenu current">
                       <a href="#" style="font-size: 11.9px;">
                         <i class="fa fa-address-book" aria-hidden="true"></i>Extraescolar
                       </a>
                       <ul class="nav">
-                        <li><a href="bateria.html" ><i class="fa fa-clipboard" aria-hidden="true"></i>Batería evaluación</a></li>
-                        <li><a href="asistencia.html"><i class="fa fa-list" aria-hidden="true"></i>Lista asistencia</a></li>
+                        <li><a href="bateria.html" style="font-size:12px;"><i class="fa fa-clipboard" aria-hidden="true"></i>Batería evaluación</a></li>
+                        <li class="current"><a href="asistencia.html"><i class="fa fa-list" aria-hidden="true"></i>Lista asistencia</a></li>
                       </ul>
                     </li>
                     <li><a href="chequeo.html"><i class="fa fa-anchor" aria-hidden="true"></i>Equipo</a></li>
@@ -131,7 +131,7 @@
                       <th>Asistencia</th>
                     </tr>
                   </thead>
-                  <tbody style="text-align:center;">
+                  <tbody id="body-tabla" style="text-align:center;">
 
                   </tbody>
                 </table>
@@ -162,6 +162,55 @@
     </div>
   </div>
 
+  <!-- Modal -->
+    <div class="modal fade" id="modal_asistencia" role="dialog">
+      <div class="modal-dialog" id="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="logo">
+              <h1 style="text-align: center;">
+                <a href="#" style="font-family: 'Bree Serif', serif; color: black;">
+                  <img src="images/SIA.png" width="15%"/>
+                  Natación ITH
+                </a>
+              </h1>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-6 col-md-offset-4">
+              <label>Buscar por fecha</label>
+              <div class="form-group">
+                <div class="input-group form_date date col-md-7" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                  <input id="filtrar" class="form-control" size="16" type="text">
+                  <span class="input-group-addon  "><span class="fa fa-calendar"></span></span>
+                </div>
+                <input type="hidden" id="dtp_input2" value="" /><br/><br/>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="tabla_modal">
+                <thead>
+                  <tr>
+                    <th id="tid">ID</th>
+                    <th id="tcontrol">No. Control</th>
+                    <th id="tnombre">Nombre</th>
+                    <th id="tfecha">Fecha</th>
+                  </tr>
+                </thead>
+                <tbody id="body-modal" class="buscar" style="text-align:center;">
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="cerrar_ejercicio" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <footer>
     <div class="container">
       <div class="copy text-center">
@@ -172,10 +221,14 @@
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/jquery.js"></script>
+  <script src="js/jquery-1.8.3-min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/bootstrap-datetimepicker.js"></script>
+  <script src="bootstrap/js/bootstrap-datetimepicker.es.js"></script>
   <script src="js/custom.js"></script>
   <script src="js/login.js"></script>
+  <script src="js/Tabullet.js"></script>
   <script src="js/asistencia.js"></script>
 </body>
 </html>

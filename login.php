@@ -8,7 +8,7 @@
         if($usuario == "admin" && $clave == "123456"){
           $datos['url'] =  "principal.html";
           session_start();
-          $_SESSION['usuario'] = "admin";
+          $_SESSION['usuario'] = "Administrador";
           $_SESSION['logged'] = true;
         }else{
           $datos['error'] = $incorrectos;
