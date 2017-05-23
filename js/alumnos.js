@@ -2,7 +2,7 @@
   function actualizar(){
 
   }
-  function editar_alumno(id, no, ca, co, se, sa, fe, cl, cu, fo, tr){
+  function editar_alumno(id, no, ca, co, se, sa, fe, cl, cu, fo, tr, gr){
     $("#modal_alumnos").modal('toggle');
     $("#nombre").val(no)
     $("#carrera").val(ca)
@@ -13,6 +13,7 @@
     $("#fecha").val(fe)
     $("#traje").val(tr)
     $("#clasificacion").val(cl)
+    $("#grupo").val(gr)
     $("#imgfoto").attr('src', 'fotos/'+fo);
     $("#guardar").attr('disabled', true);
     $("#actualizar").attr('disabled', false);
@@ -53,6 +54,7 @@
           'fecha'         : $("#fecha").val(),
           'traje'         : $("#traje").val(),
           'clasificacion' : $("#clasificacion").val(),
+          'grupo'        : $("#grupo").val(),
           'opcion'        : 'actualizar'
         }
         $.ajax({
@@ -93,16 +95,31 @@
   }
 
   $(document).ready(function(){
+    obtener_grupos();
+
     $("#modal-dialog").width('80%')
     $('.form_date').datetimepicker(opciones_time);
 
     $("#guardar").click(guardar_alumno);
     $("#buscar").click(alumnos_modal);
 
-    $$('#filtrar').change(filtrar);
+    $('#filtrar').change(filtrar);
     $('#filtrar').keyup(filtrar);
 
   })
+
+  function obtener_grupos(){
+  	$.getJSON("grupos.php",function(tgrupos){
+  		cargar_grupos(tgrupos);
+  	});
+  }
+
+  function cargar_grupos(tgrupos){
+  	$.each(tgrupos, function(i, tgrupos){
+  		var opcion = "<option value=\""+tgrupos.nombre+"\">"+tgrupos.nombre+"</option>";
+        $("#grupo").append(opcion);
+      })
+  }
 
   var opciones_time = {
       language:  'es',
@@ -130,7 +147,7 @@
         var datos_enviar = tablajson.id +", \""+tablajson.nombre+
              "\", \""+tablajson.carrera+"\", "+tablajson.control+", "+tablajson.semestre+""+
              ", \""+tablajson.sangre+"\", \""+tablajson.fecha+"\", \""+tablajson.clasificacion+""+
-             "\", \""+tablajson.curp+"\", \""+tablajson.foto+"\", \""+tablajson.traje+"\"";
+             "\", \""+tablajson.curp+"\", \""+tablajson.foto+"\", \""+tablajson.traje+"\", \""+tablajson.grupo+"\"";
         var datos_tabla = "<tr>"+
             "<td>"+tablajson.id+"</td>"+
             "<td>"+tablajson.nombre+"</td>"+
@@ -140,6 +157,7 @@
             "<td>"+tablajson.sangre+"</td>"+
             "<td>"+tablajson.fecha+"</td>"+
             "<td>"+tablajson.clasificacion+"</td>"+
+            "<td>"+tablajson.grupo+"</td>"+
             "<td><input type='button' class='btn btn-primary' value='Editar' onclick='editar_alumno("+datos_enviar+")'></td>"+
           "</tr>";
         $("#tabla_modal").append(datos_tabla);
@@ -152,13 +170,14 @@
     var datos = {
       'nombre'        : $("#nombre").val(),
       'carrera'       : $("#carrera").val(),
-      'control'    : $("#nocontrol").val(),
+      'control'       : $("#nocontrol").val(),
       'semestre'      : $("#semestre").val(),
       'curp'          : $("#curp").val(),
-      'sangre'          : $("#sangre").val(),
+      'sangre'        : $("#sangre").val(),
       'fecha'         : $("#fecha").val(),
       'traje'         : $("#traje").val(),
       'clasificacion' : $("#clasificacion").val(),
+      'grupo'        : $("#grupo").val(),
       'opcion'        : 'guardar'
     }
     $.ajax({

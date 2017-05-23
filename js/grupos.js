@@ -15,13 +15,7 @@ function alerta(id, nombre, hora_e, hora_s, dias){
   $("#eliminar").attr("disabled", false);
   $("#guardar").attr("disabled", true);
 
-  // Meter logica aqui para checkear los box
-  // $("#"+dias+"").prop("checked", true);
-  //----------------------------------------
-
   $(document).ready(function(){
-
-
     $("#hora_entrada").change(function(){
       hora_e = ($('select[id=hora_entrada]').val());
       $('#hora_entrada').val($(this).val());
@@ -129,12 +123,14 @@ function alerta(id, nombre, hora_e, hora_s, dias){
 }
 
 //----Termina editar
+function imprimir_pdf(){
+  $("#reporte").printArea()
+}
 
 $(document).ready(function(){
-
+  $("#imprimir").click(imprimir_pdf)
 
   getTabla();
-
 
   var dias = Array();
   var hora_entrada;
@@ -239,9 +235,30 @@ $(document).ready(function(){
               "<td>"+tablajson.hora_s+"</td>"+
               "<td>"+tablajson.dias+"</td>"+
               "<td><input type='button' class='btn btn-primary' value='Editar' onclick='alerta("+datos_enviar+")'></td>"+
+              "<td><input type='button' class='btn btn-primary' value='Reporte' onclick='reporte(\""+tablajson.nombre+"\")'></td>"+
             "</tr>";
           $("#tabla").append(datos_tabla);
         })
       })
   }
 });
+
+function reporte(nombre){
+  $("#modal_alumnos").modal('toggle');
+  $.getJSON("alumnos.php", function(tablajson){
+    $.each(tablajson, function(i, tablajson){
+      if(nombre == tablajson.grupo){
+        var datos_enviar = tablajson.id +", \""+tablajson.nombre+
+            "\", \""+tablajson.control+"\", \""+tablajson.carrera+
+            "\"";
+        var datos_tabla = "<tr>"+
+            "<td>"+tablajson.id+"</td>"+
+            "<td>"+tablajson.nombre+"</td>"+
+            "<td>"+tablajson.control+"</td>"+
+            "<td>"+tablajson.carrera+"</td>"+
+          "</tr>";
+        $("#tabla_modal").append(datos_tabla);
+      }
+    })
+  })
+}

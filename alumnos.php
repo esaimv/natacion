@@ -15,8 +15,9 @@
       $fe = $_POST['fecha'];
       $tr = $_POST['traje'];
       $cl = $_POST['clasificacion'];
+      $gr = $_POST['grupo'];
 
-      $q = "INSERT INTO alumnos (nombre, carrera, control, semestre, curp, sangre, fecha, traje, clasificacion) VALUES ('".$no."', '".$ca."', ".$co.", ".$se.", '".$cu."', '".$sa."', '".$fe."', '".$tr."', '".$cl."');";
+      $q = "INSERT INTO alumnos (nombre, carrera, control, semestre, curp, sangre, fecha, traje, clasificacion, grupo) VALUES ('".$no."', '".$ca."', ".$co.", ".$se.", '".$cu."', '".$sa."', '".$fe."', '".$tr."', '".$cl."', '".$gr."');";
       mysqli_query($con, $q) or die ("Problema con query");
 
       $q = "SELECT * FROM alumnos WHERE id = (SELECT MAX(id) from alumnos)";
@@ -65,6 +66,7 @@
           $fe = $_POST['fecha'];
           $tr = $_POST['traje'];
           $cl = $_POST['clasificacion'];
+          $gr = $_POST['grupo'];
 
           mysqli_query($con, "UPDATE alumnos SET nombre='".$no."' WHERE id = ".$id.";");
           mysqli_query($con, "UPDATE alumnos SET carrera='".$ca."' WHERE id = ".$id.";");
@@ -75,6 +77,7 @@
           mysqli_query($con, "UPDATE alumnos SET fecha='".$fe."' WHERE id = ".$id.";");
           mysqli_query($con, "UPDATE alumnos SET traje='".$tr."' WHERE id = ".$id.";");
           mysqli_query($con, "UPDATE alumnos SET clasificacion='".$cl."' WHERE id = ".$id.";");
+          mysqli_query($con, "UPDATE alumnos SET grupo='".$gr."' WHERE id = ".$id.";");
 
           $datos['mensaje'] = "Alumno actualizado";
           echo json_encode($datos);
@@ -128,11 +131,12 @@
       $sa = $row['sangre'];
       $fe = $row['fecha'];
       $cl = $row['clasificacion'];
+      $gr = $row['grupo'];
       $cu = $row['curp'];
       $fo = $row['foto'];
       $tr = $row['traje'];
 
-      $tabla[] = array('id' => $id, 'nombre' => $no, 'carrera' => $ca, 'control' => $co, 'semestre' => $se, 'sangre' => $sa, 'fecha' => $fe, 'clasificacion'  => $cl, 'curp'=> $cu, 'foto' => $fo, 'traje' => $tr);
+      $tabla[] = array('id' => $id, 'nombre' => $no, 'carrera' => $ca, 'control' => $co, 'semestre' => $se, 'sangre' => $sa, 'fecha' => $fe, 'clasificacion'  => $cl, 'grupo' => $gr,'curp'=> $cu, 'foto' => $fo, 'traje' => $tr);
       // $tabla['traje'] = $tr;
     }
     $datos = $tabla;

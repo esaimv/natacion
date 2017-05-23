@@ -107,31 +107,6 @@
       </div>
       <div class="col-md-10">
         <div class="row">
-          <div class="col-md-12">
-            <div class="content-box-large">
-              <div class="panel-heading">
-                <div class="panel-title">Grupos</div>
-              </div>
-              <div class="table-responsive">
-                <table class="table table-hover" id="tabla">
-                  <thead>
-                    <tr>
-                      <th id="tid">ID</th>
-                      <th id="tnombre">Nombre</th>
-                      <th id="thora_entrada">Hora de entrada</th>
-                      <th id="thora_salida">Hora de salida</th>
-                      <th id="tdias" >Dias</th>
-                      <th id="teditar">Administrar</th>
-                    </tr>
-                  </thead>
-                  <tbody style="text-align:center;">
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
           <div class="col-md-9">
             <div class="row">
               <div class="col-md-12">
@@ -252,7 +227,34 @@
             </div>
           </div>
         </div>
+
+        <div class="col-md-12">
+          <div class="content-box-large">
+            <div class="panel-heading">
+              <div class="panel-title">Grupos</div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="tabla">
+                <thead>
+                  <tr>
+                    <th id="tid">ID</th>
+                    <th id="tnombre">Nombre</th>
+                    <th id="thora_entrada">Hora de entrada</th>
+                    <th id="thora_salida">Hora de salida</th>
+                    <th id="tdias" >Dias</th>
+                    <th>Administrar</th>
+                    <th>Reporte</th>
+                  </tr>
+                </thead>
+                <tbody style="text-align:center;">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+
+      </div><!-- row -->
       </div>
     </div>
   </div>
@@ -270,7 +272,51 @@
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="js/login.js"></script>
+  <script src="js/printarea.js"></script>
   <script src="js/grupos.js"></script>
   <script src="js/Tabullet.js"></script>
+  <script src="js/jspdf.min.js"></script>
+
+
+
+  <!-- Modal -->
+    <div class="modal fade" id="modal_alumnos" role="dialog">
+      <div class="modal-dialog" id="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body" id="reporte">
+            <div class="logo">
+              <h1 style="text-align: center;">
+                <a href="#" style="font-family: 'Bree Serif', serif; color: black;">
+                  <img src="images/SIA.png" width="15%"/>
+                  Natación ITH
+                </a>
+              </h1>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="tabla_modal">
+                <thead>
+                  <tr>
+                    <th id="tid">ID</th>
+                    <th id="tnombre">Nombre</th>
+                    <th id="tno_control">No. de Control</th>
+                    <th id="tcarrera">Carrera</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-body" class="buscar" style="text-align:center;">
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="imprimir" class="btn btn-primary" data-dismiss="modal">Imprimir</button>
+            <button type="button" id="cerrar_modal" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
