@@ -80,25 +80,29 @@ function editar_chequeo(id, no, fe, ej, ti){
 			})
 		});
 		$("#actualizar").click(function(){
-			var datos = {
-				id				: id,
-				fecha 		: $("#fecha").val(),
-				nombre		: $("#nombre").val(),
-				ejercicio	: $("#ejercicio").val(),
-				tiempo  	: $("#tiempo").val(),
-				opcion 		: "actualizar"
+			if(validar_campos){
+				alert("Se deben llenar todos los campos")
+			}else {
+				var datos = {
+					id				: id,
+					fecha 		: $("#fecha").val(),
+					nombre		: $("#nombre").val(),
+					ejercicio	: $("#ejercicio").val(),
+					tiempo  	: $("#tiempo").val(),
+					opcion 		: "actualizar"
+				}
+				var opciones = {
+					type    : 'POST',
+	      	url     : 'chequeo.php',
+	      	data    : datos,
+	      	dataType: 'json',
+	      	encode  : true
+				}
+				$.ajax(opciones).done(function(drecibidos){
+					alert(drecibidos.mensaje);
+					location.reload();
+				})
 			}
-			var opciones = {
-				type    : 'POST',
-      	url     : 'chequeo.php',
-      	data    : datos,
-      	dataType: 'json',
-      	encode  : true
-			}
-			$.ajax(opciones).done(function(drecibidos){
-				alert(drecibidos.mensaje);
-				location.reload();
-			})
 		});
 		$("#eliminar").click(eliminar(id));
 		$('#filtrar').change(filtrar);
@@ -106,28 +110,40 @@ function editar_chequeo(id, no, fe, ej, ti){
 	});
 
 }
+function validar_campos(){
+  if($("#nombre").val() == "" || $("#fecha").val() == "" || $("#ejercicio").val() == "" || $("#tiempo").val() == "" ){
+    var band = false;
+  }else{
+		var band = true;
+	}
+  return band;
+}
 
 function guardar(){
-	var datos = {
-		fecha 		: $("#fecha").val(),
-		nombre		: $("#nombre").val(),
-		ejercicio	: $("#ejercicio").val(),
-		tiempo  	: $("#tiempo").val(),
-		opcion 		: "guardar",
-	}
+	if(validar_campos){
+		alert("Se deben llenar todos los campos")
+	}else {
+		var datos = {
+			fecha 		: $("#fecha").val(),
+			nombre		: $("#nombre").val(),
+			ejercicio	: $("#ejercicio").val(),
+			tiempo  	: $("#tiempo").val(),
+			opcion 		: "guardar",
+		}
 
-	var opciones = {
-				type    : 'POST',
-      	url     : 'chequeo.php',
-      	data    : datos,
-      	dataType: 'json',
-      	encode  : true
-	}
+		var opciones = {
+					type    : 'POST',
+	      	url     : 'chequeo.php',
+	      	data    : datos,
+	      	dataType: 'json',
+	      	encode  : true
+		}
 
-	$.ajax(opciones).done(function(drecibidos){
-		alert(drecibidos.mensaje);
-		location.reload();
-	})
+		$.ajax(opciones).done(function(drecibidos){
+			alert(drecibidos.mensaje);
+			location.reload();
+		})
+	}
 }
 
 function obtener_alumnos(){

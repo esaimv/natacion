@@ -3,34 +3,51 @@ $(document).ready(function(){
   $("#guardar").click(guardar);
 })
 
+function validar_campos(){
+  if($("#nombre").val() == "" || $("#edad").val() == "" || $("#peso").val() == "" || $("#talla").val() == "" || $("#doce").val() == ""){
+    var band = false;
+  }else{
+    if($("#abd").val() == "" || $("#lagxm").val() == "" || $("#salto").val() == "" || $("#flex").val() == "" ){
+      var band = false;
+    }else{
+        var band = true;
+    }
+  }
+  return band;
+}
+
 function guardar(){
-  var datos = {
-    nombre : $("#nombre").val(),
-    edad : $("#edad").val(),
-    peso : $("#peso").val(),
-    talla : $("#talla").val(),
-    doce : $("#doce").val(),
-    abd : $("#abd").val(),
-    lagxm : $("#lagxm").val(),
-    salto : $("#salto").val(),
-    flex : $("#flex").val(),
-    opcion : 'guardar'
+  if(validar_campos){
+    alert("Se deben llenar todos los campos")
+  }else{
+    var datos = {
+      nombre : $("#nombre").val(),
+      edad : $("#edad").val(),
+      peso : $("#peso").val(),
+      talla : $("#talla").val(),
+      doce : $("#doce").val(),
+      abd : $("#abd").val(),
+      lagxm : $("#lagxm").val(),
+      salto : $("#salto").val(),
+      flex : $("#flex").val(),
+      opcion : 'guardar'
+    }
+
+    alert(datos.nombre + datos.edad + datos.peso + datos.talla + datos.doce + datos.abd + datos.lagxm + datos.salto + datos.flex);
+
+    var opciones = {
+      type    : 'POST',
+      url     : 'bateria.php',
+      data    : datos,
+      dataType: 'json',
+      encode  : true
+    }
+
+    $.ajax(opciones).done(function(drecibidos){
+      alert(drecibidos.mensaje);
+      location.reload();
+    })
   }
-
-  alert(datos.nombre + datos.edad + datos.peso + datos.talla + datos.doce + datos.abd + datos.lagxm + datos.salto + datos.flex);
-
-  var opciones = {
-    type    : 'POST',
-    url     : 'bateria.php',
-    data    : datos,
-    dataType: 'json',
-    encode  : true
-  }
-
-  $.ajax(opciones).done(function(drecibidos){
-    alert(drecibidos.mensaje);
-    location.reload();
-  })
 }
 
 function cargar_tabla(){
@@ -96,32 +113,36 @@ function editar_bateria(id, no, ed, pe, ta, doce, abd, lagxm, sa, flex){
 		});
 
     $("#actualizar").click(function(){
-      var datos = {
-        id : id,
-        nombre : $("#nombre").val(),
-        edad : $("#edad").val(),
-        peso : $("#peso").val(),
-        talla : $("#talla").val(),
-        doce : $("#doce").val(),
-        abd : $("#abd").val(),
-        lagxm : $("#lagxm").val(),
-        salto : $("#salto").val(),
-        flex : $("#flex").val(),
-        opcion : 'actualizar'
-      }
+      if(validar_campos){
+        alert("Se deben llenar todos los campos")
+      }else{
+        var datos = {
+          id : id,
+          nombre : $("#nombre").val(),
+          edad : $("#edad").val(),
+          peso : $("#peso").val(),
+          talla : $("#talla").val(),
+          doce : $("#doce").val(),
+          abd : $("#abd").val(),
+          lagxm : $("#lagxm").val(),
+          salto : $("#salto").val(),
+          flex : $("#flex").val(),
+          opcion : 'actualizar'
+        }
 
-      var opciones = {
-        type    : 'POST',
-        url     : 'bateria.php',
-        data    : datos,
-        dataType: 'json',
-        encode  : true
-      }
+        var opciones = {
+          type    : 'POST',
+          url     : 'bateria.php',
+          data    : datos,
+          dataType: 'json',
+          encode  : true
+        }
 
-      $.ajax(opciones).done(function(drecibidos){
-        alert(drecibidos.mensaje);
-        location.reload();
-      })
+        $.ajax(opciones).done(function(drecibidos){
+          alert(drecibidos.mensaje);
+          location.reload();
+        })
+      }      
     })
   })
 }

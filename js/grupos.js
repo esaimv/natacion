@@ -98,26 +98,30 @@ function alerta(id, nombre, hora_e, hora_s, dias){
       for (var i = 0; i < dias2.length; i++) {
         string += " " + dias2[i];
       }
-      var datosact = {
-        'id'    : id,
-        'nombre': $("#nombre").val(),
-        'hora_e': hora_e,
-        'hora_s': hora_s,
-        'dias'  : string,
-        'opcion'  : 'actualizar'
-      }
+      if(validar_campos){
+        alert("Se deben llenar todos los campos")
+      }else{
+        var datosact = {
+          'id'    : id,
+          'nombre': $("#nombre").val(),
+          'hora_e': hora_e,
+          'hora_s': hora_s,
+          'dias'  : string,
+          'opcion'  : 'actualizar'
+        }
 
-      $.ajax({
-        type    : 'POST',
-        url     : 'grupos.php',
-        data    : datosact,
-        dataType: 'json',
-        encode  : true
-      })
-      .done(function(datos){
-        alert(datos.mensaje);
-        location.reload();
-      })
+        $.ajax({
+          type    : 'POST',
+          url     : 'grupos.php',
+          data    : datosact,
+          dataType: 'json',
+          encode  : true
+        })
+        .done(function(datos){
+          alert(datos.mensaje);
+          location.reload();
+        })
+      }
     })
   })
 }
@@ -199,27 +203,40 @@ $(document).ready(function(){
     for (var i = 0; i < dias.length; i++) {
       string += " " + dias[i];
     }
-    var datos={
-      'nombre'        : $("#nombre").val(),
-      'hora_entrada'  : hora_entrada,
-      'hora_salida'   : hora_salida,
-      'dias'          : string,
-      'opcion'  : 'agregar'
-    };
+    if(validar_campos){
+      alert("Se deben llenar todos los campos")
+    }else{
+      var datos={
+        'nombre'        : $("#nombre").val(),
+        'hora_entrada'  : hora_entrada,
+        'hora_salida'   : hora_salida,
+        'dias'          : string,
+        'opcion'  : 'agregar'
+      };
 
-    $.ajax({
-      type     : 'POST',
-      url      : 'grupos.php',
-      data     : datos,
-      dataType : 'json',
-      encode   : true
-    })
+      $.ajax({
+        type     : 'POST',
+        url      : 'grupos.php',
+        data     : datos,
+        dataType : 'json',
+        encode   : true
+      })
 
-    .done(function(recibir){
-      alert(recibir.mensaje);
-      location.reload();
-    })
+      .done(function(recibir){
+        alert(recibir.mensaje);
+        location.reload();
+      })
+    }
   });
+
+  function validar_campos(hora_entrada, hora_salida, string){
+    if($("#nombre").val() == ""){
+      var band = false;
+    }else{
+  		var band = true;
+  	}
+    return band;
+  }
   //-------- Funcion cargar tabla ----------------------
   function getTabla(){
       $.getJSON("grupos.php", function(tablajson){

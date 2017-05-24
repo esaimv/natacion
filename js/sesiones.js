@@ -33,24 +33,28 @@ function ejercicios_modal(id_sesion, grupo, fecha, descripcion, id_grupo){
       })
     })
     $("#actualizar").click(function(){
-      var datos = {
-        'id_grupo'   : $("#grupo option:selected").val(),
-        'id_sesion'   : id_sesion,
-        'fecha'       : $("#fecha").val(),
-        'ejercicio'  : $("#descripcion").val(),
-        'opcion'      : 'actualizar'
-      };
-      $.ajax({
-        type    : 'POST',
-        url     : 'sesiones.php',
-        data    : datos,
-        dataType: 'json',
-        encode  : true
-      })
-      .done(function(datosr){
-        alert(datosr.mensaje);
-        location.reload();
-      })
+      if(validar_campos()){
+        alert("Debe llenar todo los campos")
+      }else{
+        var datos = {
+          'id_grupo'   : $("#grupo option:selected").val(),
+          'id_sesion'   : id_sesion,
+          'fecha'       : $("#fecha").val(),
+          'ejercicio'  : $("#descripcion").val(),
+          'opcion'      : 'actualizar'
+        };
+        $.ajax({
+          type    : 'POST',
+          url     : 'sesiones.php',
+          data    : datos,
+          dataType: 'json',
+          encode  : true
+        })
+        .done(function(datosr){
+          alert(datosr.mensaje);
+          location.reload();
+        })
+      }
     })
     $("#eliminar").click(function(){
     })
@@ -107,26 +111,28 @@ $(document).ready(function(){
       })
     }
     function ingresar_sesion(){
-      var datos = {
-        'id_grupo'   : $("#grupo option:selected").val(),
-        'fecha'       : $("#fecha").val(),
-        'ejercicio'  : $("#descripcion").val(),
-        'opcion'      : 'agregar'
-      };
-      $.ajax({
-        type    : 'POST',
-        url     : 'sesiones.php',
-        data    : datos,
-        dataType: 'json',
-        encode  : true
-      })
-      .done(function(datosr){
-        alert(datosr.mensaje);
-        location.reload();
-      })
+      if(validar_campos()){
+        alert("Debe llenar todo los campos")
+      }else{
+        var datos = {
+          'id_grupo'   : $("#grupo option:selected").val(),
+          'fecha'       : $("#fecha").val(),
+          'ejercicio'  : $("#descripcion").val(),
+          'opcion'      : 'agregar'
+        }
+        $.ajax({
+          type    : 'POST',
+          url     : 'sesiones.php',
+          data    : datos,
+          dataType: 'json',
+          encode  : true
+        })
+        .done(function(datosr){
+          alert(datosr.mensaje);
+          location.reload();
+        })
+      }
     }
-
-
 
     $('.form_date').datetimepicker({
       language:  'es',
@@ -174,3 +180,12 @@ $(document).ready(function(){
     })
   })
 })
+
+function validar_campos(){
+  if( $("#descripcion").val() == "" || $("#fecha").val() == ""){
+    var band = false;
+  }else{
+    var band = true;
+  }
+  return band;
+}

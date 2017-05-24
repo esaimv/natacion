@@ -1,7 +1,17 @@
 
-  function actualizar(){
-
+  function validar_campos(){
+    if($("#nombre").val() == "" || $("#carrera").val() == "" || $("#noconrol").val() == "" || $("#semestre").val() == "" || $("#grupo").val() == ""){
+      var band = false;
+    }else{
+      if($("#curp").val() == "" || $("#sangre").val() == "" || $("#fecha").val() == "" || $("#traje").val() == "" || $("#clasificacion").val() == ""){
+        var band = false;
+      }else{
+          var band = true;
+      }
+    }
+    return band;
   }
+
   function editar_alumno(id, no, ca, co, se, sa, fe, cl, cu, fo, tr, gr){
     $("#modal_alumnos").modal('toggle');
     $("#nombre").val(no)
@@ -43,53 +53,57 @@
         })
       })
       $("#actualizar").click(function(){
-        var datos = {
-          'id'            : id,
-          'nombre'        : $("#nombre").val(),
-          'carrera'       : $("#carrera").val(),
-          'control'    : $("#nocontrol").val(),
-          'semestre'      : $("#semestre").val(),
-          'curp'          : $("#curp").val(),
-          'sangre'          : $("#sangre").val(),
-          'fecha'         : $("#fecha").val(),
-          'traje'         : $("#traje").val(),
-          'clasificacion' : $("#clasificacion").val(),
-          'grupo'        : $("#grupo").val(),
-          'opcion'        : 'actualizar'
-        }
-        $.ajax({
-          type    : 'POST',
-          url     : 'alumnos.php',
-          data    : datos,
-          dataType: 'json',
-          encode  : true
-        })
-        .done(function(datosr){
-          if(cambiarfoto){
-            var inputFileImage = document.getElementById("foto");
-            var file = inputFileImage.files[0];
-            var data = new FormData();
-
-            data.append('foto', file);
-            data.append('opcion', 'cambiarfoto');
-            data.append('id', id);
-            var url = "alumnos.php";
-            $.ajax({
-                url: url,
-                type: 'POST',
-                contentType: false,
-                data: data,
-                processData: false,
-                cache: false
-            }).done(function(data){
-            		alert("Actualizado correctamente")
-                location.reload();
-            });
-          }else{
-            alert(datosr.mensaje);
-            location.reload();
+        if(validar_campos){
+          alert("Se deben llenar todos los campos")
+        }else{
+          var datos = {
+            'id'            : id,
+            'nombre'        : $("#nombre").val(),
+            'carrera'       : $("#carrera").val(),
+            'control'    : $("#nocontrol").val(),
+            'semestre'      : $("#semestre").val(),
+            'curp'          : $("#curp").val(),
+            'sangre'          : $("#sangre").val(),
+            'fecha'         : $("#fecha").val(),
+            'traje'         : $("#traje").val(),
+            'clasificacion' : $("#clasificacion").val(),
+            'grupo'        : $("#grupo").val(),
+            'opcion'        : 'actualizar'
           }
-        })
+          $.ajax({
+            type    : 'POST',
+            url     : 'alumnos.php',
+            data    : datos,
+            dataType: 'json',
+            encode  : true
+          })
+          .done(function(datosr){
+            if(cambiarfoto){
+              var inputFileImage = document.getElementById("foto");
+              var file = inputFileImage.files[0];
+              var data = new FormData();
+
+              data.append('foto', file);
+              data.append('opcion', 'cambiarfoto');
+              data.append('id', id);
+              var url = "alumnos.php";
+              $.ajax({
+                  url: url,
+                  type: 'POST',
+                  contentType: false,
+                  data: data,
+                  processData: false,
+                  cache: false
+              }).done(function(data){
+                  alert("Actualizado correctamente")
+                  location.reload();
+              });
+            }else{
+              alert(datosr.mensaje);
+              location.reload();
+            }
+          })
+        }
       })
     })
   }
@@ -167,30 +181,34 @@
   }
 
   function guardar_alumno(){
-    var datos = {
-      'nombre'        : $("#nombre").val(),
-      'carrera'       : $("#carrera").val(),
-      'control'       : $("#nocontrol").val(),
-      'semestre'      : $("#semestre").val(),
-      'curp'          : $("#curp").val(),
-      'sangre'        : $("#sangre").val(),
-      'fecha'         : $("#fecha").val(),
-      'traje'         : $("#traje").val(),
-      'clasificacion' : $("#clasificacion").val(),
-      'grupo'        : $("#grupo").val(),
-      'opcion'        : 'guardar'
+    if(validar_campos){
+      alert("Se deben llenar todos los campos")
+    }else{
+      var datos = {
+        'nombre'        : $("#nombre").val(),
+        'carrera'       : $("#carrera").val(),
+        'control'       : $("#nocontrol").val(),
+        'semestre'      : $("#semestre").val(),
+        'curp'          : $("#curp").val(),
+        'sangre'        : $("#sangre").val(),
+        'fecha'         : $("#fecha").val(),
+        'traje'         : $("#traje").val(),
+        'clasificacion' : $("#clasificacion").val(),
+        'grupo'        : $("#grupo").val(),
+        'opcion'        : 'guardar'
+      }
+      $.ajax({
+        type    : 'POST',
+        url     : 'alumnos.php',
+        data    : datos,
+        dataType: 'json',
+        encode  : true
+      })
+      .done(function(datosr){
+        uploadAjax(datosr.id);
+        location.reload();
+      })
     }
-    $.ajax({
-      type    : 'POST',
-      url     : 'alumnos.php',
-      data    : datos,
-      dataType: 'json',
-      encode  : true
-    })
-    .done(function(datosr){
-      uploadAjax(datosr.id);
-      location.reload();
-    })
   }
 
   function uploadAjax(id) {
@@ -211,5 +229,5 @@
         cache: false
     }).done(function(data){
     		alert("Guardado correctamente")
-    });
+    })
   }
