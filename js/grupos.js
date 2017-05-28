@@ -16,6 +16,8 @@ function alerta(id, nombre, hora_e, hora_s, dias){
   $("#guardar").attr("disabled", true);
 
   $(document).ready(function(){
+    $(window).resize(width_modal)
+      width_modal()
     $("#hora_entrada").change(function(){
       hora_e = ($('select[id=hora_entrada]').val());
       $('#hora_entrada').val($(this).val());
@@ -127,11 +129,63 @@ function alerta(id, nombre, hora_e, hora_s, dias){
 }
 
 //----Termina editar
+
 function imprimir_pdf(){
-  $("#reporte").printArea()
+  var columns = ["ID", "Nombre", "No. de Control", "Carrera"];
+  var rows = []
+  var nombre = gnombre
+  var otro
+  $.getJSON("alumnos.php", function(tr){
+    $.each(tr, function(i, tr){
+      if(nombre == tr.grupo){
+        otro = [tr.id, tr.nombre , tr.control, tr.carrera]
+        rows.push(otro)
+      }
+    })
+      var doc = new jsPDF("p", "pt");
+      doc.autoTable(columns, rows);
+      doc.text(20, 20, 'Reporte de Grupo');      
+      doc.save('table.pdf');;
+  })
+
+  // Only pt supported (not mm or in)
+
+  // $("#reporte").printArea()
+  // var doc = new jsPDF();
+  // doc.addHTML($('#reporte'), 15, 15, {
+  // 'background': '#fff',
+  // 'border':'2px solid white',
+  // }, function() {
+  // doc.save('sample-file.pdf');
+  // });
+
+  /*var pdf = new jsPDF('p', 'pt', 'letter'),
+    source = $('#reporte')[0],
+    margins = {
+        top: 40,
+        bottom: 40,
+        left: 90,
+        right: 40,
+        width: 522
+    };
+
+    pdf.fromHTML(
+        source,
+        margins.left,
+        margins.top,
+        {
+        'width': margins.width
+        },
+        function (dispose) {
+            pdf.save('Test.pdf');
+        },
+        margins
+    );*/
 }
 
 $(document).ready(function(){
+  $(window).resize(width_modal)
+    width_modal()
   $("#imprimir").click(imprimir_pdf)
 
   getTabla();
@@ -260,7 +314,18 @@ $(document).ready(function(){
   }
 });
 
+function width_modal(){
+  Width = $(window).width();
+  if(Width<=970){
+    $("#modal-dialog").width('initial')
+  }else{
+    $("#modal-dialog").width('80%')
+  }
+}
+var gnombre
 function reporte(nombre){
+  gnombre = nombre
+  $("#tabla-body").empty()
   $("#modal_alumnos").modal('toggle');
   $.getJSON("alumnos.php", function(tablajson){
     $.each(tablajson, function(i, tablajson){

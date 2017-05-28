@@ -111,7 +111,6 @@
   $(document).ready(function(){
     obtener_grupos();
 
-    $("#modal-dialog").width('80%')
     $('.form_date').datetimepicker(opciones_time);
 
     $("#guardar").click(guardar_alumno);
@@ -120,7 +119,19 @@
     $('#filtrar').change(filtrar);
     $('#filtrar').keyup(filtrar);
 
+    $(window).resize(width_modal);
+    width_modal();
+
   })
+
+  function width_modal(){
+    Width = $(window).width();
+    if(Width<=970){
+      $("#modal-dialog").width('initial')
+    }else{
+      $("#modal-dialog").width('80%')
+    }
+  }
 
   function obtener_grupos(){
   	$.getJSON("grupos.php",function(tgrupos){

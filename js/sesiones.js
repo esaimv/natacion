@@ -62,7 +62,8 @@ function ejercicios_modal(id_sesion, grupo, fecha, descripcion, id_grupo){
 }
 
 $(document).ready(function(){
-    $("#modal-dialog").width('70%')
+    $(window).resize(width_modal)
+    width_modal()
     obtenergrupos();
     $("#guardar").click(ingresar_sesion);
     $("#buscar").click(obtenergrupos_modal);
@@ -72,6 +73,15 @@ $(document).ready(function(){
         agregar_ejercicio()
     }
 });
+    function width_modal(){
+    Width = $(window).width();
+      if(Width<=970){
+        $("#modal-dialog").width('initial')
+      }else{
+        $("#modal-dialog").width('80%')
+      }
+    }
+
     function agregar_ejercicio(){
       if($("#descripcion").val() == ""){
           $("#descripcion").val($("#ejercicio").val())

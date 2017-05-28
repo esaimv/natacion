@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  $(window).resize(width_modal)
+    width_modal()
   obtener_grupos();
   $("#grupo").change(cargar);
   obtener_fecha();
@@ -6,7 +8,15 @@ $(document).ready(function(){
     alert("Asistencia Guardada");
     location.reload();
   });
-  $("#modal-dialog").width('70%')
+
+  function width_modal(){
+  Width = $(window).width();
+    if(Width<=970){
+      $("#modal-dialog").width('initial')
+    }else{
+      $("#modal-dialog").width('80%')
+    }
+  }  
   $("#buscar").click(modal_asistencia);
 
   $('#filtrar').change(function () {
@@ -26,6 +36,15 @@ $(document).ready(function(){
     })
   })
 })
+
+function width_modal(){
+  Width = $(window).width();
+  if(Width<=970){
+    $("#modal-dialog").width('100%')
+  }else{
+    $("#modal-dialog").width('80%')
+  }
+}
 
 
 function modal_asistencia(){
