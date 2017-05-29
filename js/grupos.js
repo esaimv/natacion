@@ -100,7 +100,7 @@ function alerta(id, nombre, hora_e, hora_s, dias){
       for (var i = 0; i < dias2.length; i++) {
         string += " " + dias2[i];
       }
-      if(validar_campos){
+      if(false){
         alert("Se deben llenar todos los campos")
       }else{
         var datosact = {
@@ -144,7 +144,7 @@ function imprimir_pdf(){
     })
       var doc = new jsPDF("p", "pt");
       doc.autoTable(columns, rows);
-      doc.text(20, 20, 'Reporte de Grupo');      
+      doc.text(20, 20, 'Reporte de Grupo');
       doc.save('table.pdf');;
   })
 
@@ -257,7 +257,7 @@ $(document).ready(function(){
     for (var i = 0; i < dias.length; i++) {
       string += " " + dias[i];
     }
-    if(validar_campos){
+    if(false){
       alert("Se deben llenar todos los campos")
     }else{
       var datos={

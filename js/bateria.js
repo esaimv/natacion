@@ -3,21 +3,9 @@ $(document).ready(function(){
   $("#guardar").click(guardar);
 })
 
-function validar_campos(){
-  if($("#nombre").val() == "" || $("#edad").val() == "" || $("#peso").val() == "" || $("#talla").val() == "" || $("#doce").val() == ""){
-    var band = false;
-  }else{
-    if($("#abd").val() == "" || $("#lagxm").val() == "" || $("#salto").val() == "" || $("#flex").val() == "" ){
-      var band = false;
-    }else{
-        var band = true;
-    }
-  }
-  return band;
-}
 
 function guardar(){
-  if(validar_campos){
+  if(false){
     alert("Se deben llenar todos los campos")
   }else{
     var datos = {
@@ -113,7 +101,7 @@ function editar_bateria(id, no, ed, pe, ta, doce, abd, lagxm, sa, flex){
 		});
 
     $("#actualizar").click(function(){
-      if(validar_campos){
+      if(false){
         alert("Se deben llenar todos los campos")
       }else{
         var datos = {
@@ -142,7 +130,7 @@ function editar_bateria(id, no, ed, pe, ta, doce, abd, lagxm, sa, flex){
           alert(drecibidos.mensaje);
           location.reload();
         })
-      }      
+      }
     })
   })
 }

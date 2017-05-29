@@ -80,7 +80,7 @@ function editar_chequeo(id, no, fe, ej, ti){
 			})
 		});
 		$("#actualizar").click(function(){
-			if(validar_campos){
+			if(false){
 				alert("Se deben llenar todos los campos")
 			}else {
 				var datos = {
@@ -120,7 +120,7 @@ function validar_campos(){
 }
 
 function guardar(){
-	if(validar_campos){
+	if(false){
 		alert("Se deben llenar todos los campos")
 	}else {
 		var datos = {

@@ -33,7 +33,7 @@ function ejercicios_modal(id_sesion, grupo, fecha, descripcion, id_grupo){
       })
     })
     $("#actualizar").click(function(){
-      if(validar_campos()){
+      if(false){
         alert("Debe llenar todo los campos")
       }else{
         var datos = {
@@ -121,7 +121,7 @@ $(document).ready(function(){
       })
     }
     function ingresar_sesion(){
-      if(validar_campos()){
+      if(false){
         alert("Debe llenar todo los campos")
       }else{
         var datos = {

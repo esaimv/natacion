@@ -1,16 +1,4 @@
 
-  function validar_campos(){
-    if($("#nombre").val() == "" || $("#carrera").val() == "" || $("#noconrol").val() == "" || $("#semestre").val() == "" || $("#grupo").val() == ""){
-      var band = false;
-    }else{
-      if($("#curp").val() == "" || $("#sangre").val() == "" || $("#fecha").val() == "" || $("#traje").val() == "" || $("#clasificacion").val() == ""){
-        var band = false;
-      }else{
-          var band = true;
-      }
-    }
-    return band;
-  }
 
   function editar_alumno(id, no, ca, co, se, sa, fe, cl, cu, fo, tr, gr){
     $("#modal_alumnos").modal('toggle');
@@ -53,7 +41,7 @@
         })
       })
       $("#actualizar").click(function(){
-        if(validar_campos){
+        if(false){
           alert("Se deben llenar todos los campos")
         }else{
           var datos = {
@@ -192,7 +180,7 @@
   }
 
   function guardar_alumno(){
-    if(validar_campos){
+    if(false){
       alert("Se deben llenar todos los campos")
     }else{
       var datos = {
